@@ -1,0 +1,124 @@
+.bottom-modal {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 111;
+}
+.bottom-modal .bottom-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 107;
+    background-color: rgba(0, 0, 0, 0.92);
+    opacity: 0;
+}
+.bottom-modal .bottom-modal-backdrop.backdrop-visible {
+    animation: BackdropVisibleContainer 200ms ease-in-out forwards;
+}
+.bottom-modal .bottom-modal-backdrop.backdrop-hidden {
+    animation: BackdropHiddenContainer 200ms ease-in-out forwards;
+}
+@keyframes BackdropVisibleContainer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes BackdropHiddenContainer {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.bottom-modal .bottom-modal-container {
+    background-color: #0B0B0E;
+    border-radius: 24px 24px 0 0;
+    max-height: 90%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 109;
+    opacity: 0;
+    transform: translateY(15%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.bottom-modal .bottom-modal-container.container-visible {
+    animation: BottomModalVisibleContainer 200ms ease-in-out forwards;
+}
+.bottom-modal .bottom-modal-container.container-hidden {
+    animation: BottomModalHiddenContainer 200ms ease-in-out forwards;
+}
+@keyframes BottomModalVisibleContainer {
+    0% {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes BottomModalHiddenContainer {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+}
+.bottom-modal .bottom-modal-container .bottom-modal-body {
+    height: 100%;
+    padding: 0 20px var(--modal-offset-bottom) 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+.bottom-modal .bottom-modal-container .bottom-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.bottom-modal .bottom-modal-container .bottom-modal-header .bottom-modal-header-title {
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.bottom-modal .bottom-modal-container .bottom-modal-header .bottom-modal-header-exit {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom-modal .bottom-modal-container .bottom-modal-header .bottom-modal-header-exit .styled-icon {
+    width: 100%;
+    height: 100%;
+    color: #585d6e;
+}
+.bottom-modal .bottom-modal-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bottom-modal:not([data-current-modal="shop-buy-donation"]) .bottom-modal-content {
+    overflow: hidden;
+}

@@ -1,0 +1,85 @@
+.invited-list-header-enter-from,
+.invited-list-header-leave-to {
+    opacity: 0;
+    transform: translateY(-25%);
+}
+.invited-list-header-enter-to,
+.invited-list-header-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.invited-list-header-enter-active,
+.invited-list-header-leave-active {
+    transition: all 400ms ease-in-out;
+}
+
+.invited-pagination-enter-from,
+.invited-pagination-leave-to {
+    opacity: 0;
+    transform: translateY(-20%);
+}
+.invited-pagination-enter-to,
+.invited-pagination-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.invited-pagination-enter-active,
+.invited-pagination-leave-active {
+    transition: all 350ms ease-in-out;
+}
+
+.invited-list-loading-enter-from,
+.invited-list-loading-leave-to {
+    opacity: 0;
+    transform: translateY(-10%);
+}
+.invited-list-loading-enter-to,
+.invited-list-loading-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.invited-list-loading-enter-active,
+.invited-list-loading-leave-active {
+    transition: all 350ms ease-in-out;
+}
+
+.invited-list-not-found-block-enter-from,
+.invited-list-not-found-block-leave-to {
+    transform: translateY(-10%);
+}
+.invited-list-not-found-block-enter-to,
+.invited-list-not-found-block-leave-from {
+    transform: translateY(0);
+}
+.invited-list-not-found-block-enter-active,
+.invited-list-not-found-block-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.invited-list-not-found-title-enter-from,
+.invited-list-not-found-title-leave-to {
+    transform: translateY(20%);
+}
+.invited-list-not-found-title-enter-to,
+.invited-list-not-found-title-leave-from {
+    transform: translateY(0);
+}
+.invited-list-not-found-title-enter-active,
+.invited-list-not-found-title-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.invited-list-not-found-description-enter-from,
+.invited-list-not-found-description-leave-to {
+    transform: translateY(15%);
+    opacity: 0;
+}
+.invited-list-not-found-description-enter-to,
+.invited-list-not-found-description-leave-from {
+    transform: translateY(0);
+    opacity: 1;
+}
+.invited-list-not-found-description-enter-active,
+.invited-list-not-found-description-leave-active {
+    transition: all 400ms ease-in-out;
+}

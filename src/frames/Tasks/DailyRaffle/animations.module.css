@@ -1,0 +1,70 @@
+.daily-raffle-enter-from,
+.daily-raffle-leave-to {
+	transform: translateY(-3%);
+	opacity: 0;
+}
+.daily-raffle-enter-to,
+.daily-raffle-leave-from {
+	transform: translateY(0);
+	opacity: 1;
+}
+.daily-raffle-enter-active,
+.daily-raffle-leave-active {
+	transition: all 300ms ease-in-out;
+}
+
+.daily-raffle-mini-badges-enter-from,
+.daily-raffle-mini-badges-leave-to {
+	transform: translateY(-20%);
+	opacity: 0;
+}
+.daily-raffle-mini-badges-enter-to,
+.daily-raffle-mini-badges-leave-from {
+	transform: translateY(0);
+	opacity: 1;
+}
+.daily-raffle-mini-badges-enter-active,
+.daily-raffle-mini-badges-leave-active {
+	transition: all 300ms ease-in-out;
+}
+
+.daily-raffle-badge-info-enter-from,
+.daily-raffle-badge-info-leave-to {
+	opacity: 0;
+}
+.daily-raffle-badge-info-enter-to,
+.daily-raffle-badge-info-leave-from {
+	opacity: 1;
+}
+.daily-raffle-badge-info-enter-active,
+.daily-raffle-badge-info-leave-active {
+	transition: all 400ms ease-in-out;
+}
+
+.daily-raffle-badge-danger-enter-from,
+.daily-raffle-badge-danger-leave-to {
+	opacity: 0;
+}
+.daily-raffle-badge-danger-enter-to,
+.daily-raffle-badge-danger-leave-from {
+	opacity: 1;
+}
+.daily-raffle-badge-danger-enter-active,
+.daily-raffle-badge-danger-leave-active {
+	transition: all 500ms ease-in-out;
+}
+
+.daily-raffle-block-enter-from,
+.daily-raffle-block-leave-to {
+	transform: translateY(-5%);
+	opacity: 0;
+}
+.daily-raffle-block-enter-to,
+.daily-raffle-block-leave-from {
+	transform: translateY(0);
+	opacity: 1;
+}
+.daily-raffle-block-enter-active,
+.daily-raffle-block-leave-active {
+	transition: all 400ms ease-in-out;
+}

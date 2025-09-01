@@ -1,0 +1,89 @@
+.game-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: var(--max-width-main);
+}
+.game-error .game-error-content {
+    border-radius: 20px;
+    background-color: rgb(24 24 31 / 50%);
+    width: 300px;
+    margin: 0 25px;
+    position: relative;
+    padding: 24px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.game-error .game-error-content .info {
+    padding: 0 0 12px 0;
+    z-index: 11;
+}
+.game-error .game-error-content .info .title {
+    padding-bottom: 6px;
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+.game-error .game-error-content .info .title .text {
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+}
+.game-error .game-error-content .info .title .image {
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.game-error .game-error-content .info .title.type-success .image {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    background-image: url("~/assets/images/success-icon.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.game-error .game-error-content .info .title.type-error .image {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background-image: url("~/assets/images/error-question.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.game-error .game-error-content .info .title.type-success {
+    column-gap: 6px;
+}
+.game-error .game-error-content .info .title.type-error {
+    column-gap: 4px;
+}
+.game-error .game-error-content .info .description {
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #585d6e;
+}
+.game-error .game-error-content .error-btn {
+    height: 42px;
+    display: flex;
+    border-radius: 12px;
+    align-items: center;
+    column-gap: 5px;
+    justify-content: center;
+    padding: 0 32px;
+    color: #fff;
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.game-error .game-error-content .error-btn-success {
+    background-color: #4599E6;
+}
+.game-error .game-error-content .error-btn-fail {
+    background-color: #f76161;
+}

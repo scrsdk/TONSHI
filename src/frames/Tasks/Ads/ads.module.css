@@ -1,0 +1,82 @@
+.tasks-ads {
+	margin-bottom: 16px;
+	background: rgb(24 24 31 / 50%);
+	padding: 14px 16px;
+	border-radius: 12px;
+}
+.tasks-title {
+	font-weight: 700;
+	font-size: 20px;
+	color: #e1e1e1;
+	margin-bottom: 6px;
+}
+.tasks-description {
+	font-weight: 500;
+	font-size: 14px;
+	color: #585d6e;
+}
+
+.ads-button {
+	background-color: #7bbc31;
+	border-radius: 16px;
+	padding: 15px 17px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	min-height: 50px;
+	margin-top: 12px;
+}
+.ads-button:disabled {
+	background-color: #18181f;
+}
+.ads-button .name {
+	display: flex;
+	align-items: center;
+	column-gap: 6px;
+	justify-content: center;
+}
+.ads-button .name .styled-icon {
+	width: 22px;
+	height: 22px;
+}
+.ads-button .name .text {
+	font-weight: 600;
+	font-size: 16px;
+	color: #fff;
+}
+.ads-button:disabled .name {
+	filter: brightness(0.3) invert(39%) sepia(6%) saturate(764%)
+		hue-rotate(182deg) brightness(65%) contrast(86%);
+}
+.ads-button .count {
+	display: flex;
+	font-weight: 600;
+	font-size: 14px;
+	color: #ededed;
+	position: absolute;
+	right: 18px;
+	top: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+}
+.ads-button:disabled .count {
+	color: #585d6e;
+	font-size: 12px;
+}
+.ads-button .badge {
+	position: absolute;
+	left: 18px;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: #4c760b;
+	color: white;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 4px 8px;
+	border-radius: 8px;
+}
+.ads-button:disabled .badge {
+	background-color: rgba(53, 53, 68, 0.25);
+	color: #585d6e;
+}

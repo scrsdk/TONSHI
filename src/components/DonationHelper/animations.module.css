@@ -1,0 +1,27 @@
+.donation-helper-backdrop-enter-from,
+.donation-helper-backdrop-leave-to {
+    opacity: 0;
+}
+.donation-helper-backdrop-enter-to,
+.donation-helper-backdrop-leave-from {
+    opacity: 1;
+}
+.donation-helper-backdrop-enter-active,
+.donation-helper-backdrop-leave-active {
+    transition: all 200ms ease-in-out;
+}
+
+.donation-helper-content-enter-from,
+.donation-helper-content-leave-to {
+    transform: translateY(-3%);
+    opacity: 0;
+}
+.donation-helper-content-enter-to,
+.donation-helper-content-leave-from {
+    transform: translateY(0);
+    opacity: 1;
+}
+.donation-helper-content-enter-active,
+.donation-helper-content-leave-active {
+    transition: all 200ms ease-in-out;
+}

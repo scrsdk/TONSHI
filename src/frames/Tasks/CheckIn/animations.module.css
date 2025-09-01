@@ -1,0 +1,42 @@
+.check-in-enter-from,
+.check-in-leave-to {
+    transform: translateY(-5%);
+    opacity: 0;
+}
+.check-in-enter-to,
+.check-in-leave-from {
+    transform: translateY(0);
+    opacity: 1;
+}
+.check-in-enter-active,
+.check-in-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.connect-wallet-enter-from,
+.connect-wallet-leave-to {
+    opacity: 0;
+}
+.connect-wallet-enter-to,
+.connect-wallet-leave-from {
+    opacity: 1;
+}
+.connect-wallet-enter-active,
+.connect-wallet-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.connect-wallet-block-enter-from,
+.connect-wallet-block-leave-to {
+    opacity: 0;
+    transform: translateY(-8%);
+}
+.connect-wallet-block-enter-to,
+.connect-wallet-block-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.connect-wallet-block-enter-active,
+.connect-wallet-block-leave-active {
+    transition: all 300ms ease-in-out;
+}

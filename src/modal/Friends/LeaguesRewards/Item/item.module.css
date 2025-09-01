@@ -1,0 +1,64 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 10px;
+    width: 100%;
+    border-bottom: 1px solid rgb(255 255 255 / 4%);
+    padding: 12px 0 12px 0;
+}
+.item .info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+}
+.item .info .league-icon {
+    width: 35px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 35px;
+    background-position: center;
+}
+.item.copper .info .league-icon,
+.item.silver .info .league-icon {
+    transform: scale(0.9);
+}
+.item .info .name {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 107%;
+    color: #fff;
+}
+.item .rewards {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+.item .rewards .reward {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 4px;
+}
+.item .rewards .reward .styled-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.item .rewards .reward .amount {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: 6px;
+}
+.item .rewards .reward .amount .small-text {
+    font-weight: 500;
+    font-size: 10px;
+    color: #585d6e;
+}
+.item .rewards .reward .amount .value {
+    font-weight: 600;
+    font-size: 23px;
+    color: #fff;
+}

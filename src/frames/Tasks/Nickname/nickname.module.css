@@ -1,0 +1,88 @@
+.tasks-nickname {
+	margin-bottom: 16px;
+	background: rgb(24 24 31 / 50%);
+	padding: 14px 16px;
+	border-radius: 12px;
+}
+.tasks-title {
+	font-weight: 700;
+	font-size: 20px;
+	color: #e1e1e1;
+	margin-bottom: 6px;
+}
+.tasks-description {
+	font-weight: 500;
+	font-size: 14px;
+	color: #585d6e;
+}
+.tasks-description .tasks-description-badge {
+	padding: 2px 4px 2px 6px;
+	background-color: #18181ff5;
+	color: #585d6e;
+	font-weight: 600;
+	border-radius: 6px;
+	margin: 0px 6px 0px 2px;
+}
+
+.tasks-nickname-error-badge {
+	border-radius: 14px;
+	width: calc(100% - 36px);
+	padding: 12px 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	font-size: 14px;
+	background-color: rgba(234, 66, 38, 0.3);
+	color: #ff6248;
+	margin-top: 12px;
+}
+
+.nickname-button {
+	background-color: #7bbc31;
+	border-radius: 16px;
+	padding: 15px 17px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	min-height: 50px;
+	margin-top: 12px;
+}
+.nickname-button:disabled {
+	background-color: #18181f;
+}
+.nickname-button .name {
+	display: flex;
+	align-items: center;
+	column-gap: 6px;
+	justify-content: center;
+}
+.nickname-button .name .styled-icon {
+	width: 22px;
+	height: 22px;
+}
+.nickname-button .name .text {
+	font-weight: 600;
+	font-size: 16px;
+	color: #fff;
+}
+.nickname-button:disabled .name {
+	filter: brightness(0.3) invert(39%) sepia(6%) saturate(764%)
+		hue-rotate(182deg) brightness(65%) contrast(86%);
+}
+.nickname-button .time {
+	display: flex;
+	font-weight: 600;
+	font-size: 14px;
+	color: #ededed;
+	position: absolute;
+	right: 18px;
+	top: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+}
+.nickname-button:disabled .time {
+	color: #585d6e;
+	font-size: 12px;
+}

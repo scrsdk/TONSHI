@@ -1,0 +1,29 @@
+.page-header-title-enter-from,
+.page-header-title-leave-to {
+    opacity: 0;
+    transform: translateY(-35%);
+}
+.page-header-title-enter-to,
+.page-header-title-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.page-header-title-enter-active,
+.page-header-title-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.page-header-description-enter-from,
+.page-header-description-leave-to {
+    opacity: 0;
+    transform: translateY(-45%);
+}
+.page-header-description-enter-to,
+.page-header-description-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.page-header-description-enter-active,
+.page-header-description-leave-active {
+    transition: all 300ms ease-in-out;
+}

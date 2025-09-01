@@ -1,0 +1,180 @@
+.invited-list {
+    margin-top: 14px;
+}
+.invited-list .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.invited-list .header .friends-count {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+}
+.invited-list .header .friends-count .count {
+    font-size: 30px;
+}
+.invited-list .header .button-inviters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 4px;
+    background: rgba(255, 165, 56, 0.15);
+    padding: 12px 16px;
+    border-radius: 111px;
+}
+.invited-list .header .button-inviters .image {
+    width: 23px;
+    height: 18px;
+    flex-shrink: 0;
+    background-image: url("~/assets/images/crown-icon.svg");
+    background-position: 0 1px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.invited-list .header .button-inviters .name {
+    color: #FFA538;
+    font-weight: 600;
+    font-size: 13px;
+}
+.invited-list .list-of-users {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 12px;
+    position: relative;
+}
+.invited-list .pagination {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.invited-list .pagination .button {
+    border-radius: 14px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgb(24 24 31 / 65%);
+    border: 1px solid rgba(255, 255, 255, .02);
+}
+.invited-list .pagination .button:not(.button-arrow) {
+    width: 34px;
+    border-color: rgba(69, 153, 230, 0.04);
+}
+.invited-list .pagination .button.button-arrow {
+    padding: 0 12px;
+    column-gap: 4px;
+}
+.invited-list .pagination .button.button-arrow:disabled {
+    opacity: .4;
+}
+.invited-list .pagination .button.button-arrow .name {
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    color: #585D6E;
+    z-index: 11;
+    position: relative;
+}
+.invited-list .pagination .button .styled-icon {
+    z-index: 11;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    color: #585D6E;
+}
+.invited-list .pagination .button .amount {
+    color: #585d6e;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: center;
+}
+.invited-list .pagination .button.active .amount {
+    color: #4599e6;
+}
+.invited-list .pagination .button.active {
+    background: rgba(69, 153, 230, 0.15);
+}
+.invited-list .pagination .pagination-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+}
+.invited-list .invited-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+}
+.invited-list .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 8px;
+    max-height: 120px;
+    height: 120px;
+}
+.invited-list .list-of-users .empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 6px;
+    max-height: 100px;
+    height: 100px;
+    background-color: rgb(24 24 31 / 25%);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 18px 15px;
+    border-radius: 14px;
+}
+.invited-list .list-of-users .empty .styled-icon,
+.invited-list .error .styled-icon {
+    width: 26px;
+    height: 26px;
+    color: #585d6e;
+}
+.invited-list .list-of-users .empty .text,
+.invited-list .error .text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 167%;
+    text-align: center;
+    color: #585d6e;
+    opacity: .875;
+    max-width: 180px;
+}
+.invited-list .list-of-users .loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.invited-list .list-of-users .loading:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .75);
+}
+.invited-list .list-of-users .loading .some-loader {
+    z-index: 11;
+    position: absolute;
+}
+.invited-list .list-of-users .erd-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}

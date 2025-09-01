@@ -1,0 +1,15 @@
+.home-farm-button-enter-from,
+.home-farm-button-leave-to {
+    opacity: 0;
+    transform: translateY(15%);
+}
+.home-farm-button-enter-to,
+.home-farm-button-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.home-farm-button-enter-active,
+.home-farm-button-leave-active {
+    transition: opacity 400ms ease-in-out,
+        transform 400ms ease-in-out;
+}

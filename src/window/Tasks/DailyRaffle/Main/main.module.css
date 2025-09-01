@@ -1,0 +1,197 @@
+.daily-raffle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: calc(100% - 20px);
+	max-width: 340px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.daily-raffle .daily-raffle-loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+.daily-raffle .daily-raffle-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: -18px;
+}
+.daily-raffle .daily-raffle-header .daily-raffle-header-image {
+	background-image: url('~/assets/images/clever-icon.svg');
+	width: 200px;
+	height: 200px;
+	flex-shrink: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+.daily-raffle .daily-raffle-header .daily-raffle-header-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	row-gap: 4px;
+	padding-bottom: 12px;
+}
+.daily-raffle
+	.daily-raffle-header
+	.daily-raffle-header-info
+	.daily-raffle-header-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 6px;
+}
+.daily-raffle
+	.daily-raffle-header
+	.daily-raffle-header-info
+	.daily-raffle-header-title
+	.text {
+	font-weight: 600;
+	font-size: 16px;
+	color: #fff;
+}
+.daily-raffle
+	.daily-raffle-header
+	.daily-raffle-header-info
+	.daily-raffle-header-title
+	.badge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(109 113 112 / 20%);
+	border-radius: 10px;
+	column-gap: 4px;
+	padding: 4px 10px;
+}
+.daily-raffle
+	.daily-raffle-header
+	.daily-raffle-header-info
+	.daily-raffle-header-title
+	.badge
+	.styled-icon {
+	width: 16px;
+	height: 16px;
+	color: #d2e4e4;
+	margin-top: -1px;
+}
+.daily-raffle
+	.daily-raffle-header
+	.daily-raffle-header-info
+	.daily-raffle-header-title
+	.badge
+	.badge-text {
+	font-weight: 600;
+	font-size: 14px;
+	color: #d2e4e4;
+}
+.daily-raffle
+	.daily-raffle-header
+	.daily-raffle-header-info
+	.daily-raffle-header-description {
+	font-weight: 600;
+	font-size: 16px;
+	color: #585d6e;
+	text-align: center;
+}
+.daily-raffle .daily-raffle-badges {
+	display: grid;
+	grid-template-columns: 40% calc(60% - 10px);
+	row-gap: 14px;
+	column-gap: 10px;
+	width: 100%;
+	padding-bottom: 16px;
+}
+.daily-raffle .daily-raffle-badge {
+	border-radius: 14px;
+	width: 100%;
+	height: 42px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	font-size: 16px;
+	color: #d2e4e4;
+}
+.daily-raffle .daily-raffle-badge .icon-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 4px;
+}
+.daily-raffle .daily-raffle-badge .styled-icon {
+	width: 20px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border-radius: 50px;
+	height: 20px;
+}
+.daily-raffle .daily-raffle-badge.badge-danger {
+	height: 36px;
+	flex-shrink: 0;
+}
+.daily-raffle .daily-raffle-badge.badge-danger {
+	background-color: rgba(234, 66, 38, 0.5);
+}
+.daily-raffle .daily-raffle-badge.badge-green {
+	background-color: rgba(142, 215, 108, 0.3);
+}
+.daily-raffle .daily-raffle-badge.badge-primary {
+	background-color: rgba(64, 166, 216, 0.3);
+}
+.daily-raffle .content {
+	background-color: rgb(24 24 31 / 60%);
+	width: 100%;
+	border-radius: 14px;
+	height: 100%;
+	overflow-y: auto;
+}
+.daily-raffle .content .content-body {
+	padding: 12px 10px;
+	height: calc(100% - 32px);
+}
+.daily-raffle .content .content-body .content-items {
+	display: flex;
+	flex-direction: column;
+	padding-left: 1000px;
+	height: 100%;
+}
+.daily-raffle .content .content-body .content-items .list-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	row-gap: 8px;
+	height: 100%;
+	width: 100%;
+}
+.daily-raffle .content .content-body .content-items .list-empty .styled-icon {
+	width: 26px;
+	height: 26px;
+	color: #585d6e;
+}
+.daily-raffle .content .content-body .content-items .list-empty .text {
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 167%;
+	text-align: center;
+	color: #585d6e;
+	opacity: 0.875;
+	max-width: 190px;
+}
+.daily-raffle .content .content-body .content-items.content-items-visible {
+	padding-left: 0;
+}
+.daily-raffle .content .content-body .content-loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+.daily-raffle .content .content-body .first-item {
+	padding-top: 0;
+}

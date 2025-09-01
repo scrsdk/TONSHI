@@ -1,0 +1,29 @@
+.tasks-ads-enter-from,
+.tasks-ads-leave-to {
+	transform: translateY(-4%);
+	opacity: 0;
+}
+.tasks-ads-enter-to,
+.tasks-ads-leave-from {
+	transform: translateY(0);
+	opacity: 1;
+}
+.tasks-ads-enter-active,
+.tasks-ads-leave-active {
+	transition: all 300ms ease-in-out;
+}
+
+.tasks-ads-button-enter-from,
+.tasks-ads-button-leave-to {
+	transform: translateY(15%);
+	opacity: 0;
+}
+.tasks-ads-button-enter-to,
+.tasks-ads-button-leave-from {
+	transform: translateY(0);
+	opacity: 1;
+}
+.tasks-ads-button-enter-active,
+.tasks-ads-button-leave-active {
+	transition: all 400ms ease-in-out;
+}

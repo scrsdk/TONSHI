@@ -1,0 +1,87 @@
+.top-inviters-header-image-enter-from,
+.top-inviters-header-image-leave-to {
+    opacity: 0;
+    transform: translateY(10%);
+}
+.top-inviters-header-image-enter-to,
+.top-inviters-header-image-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.top-inviters-header-image-enter-active,
+.top-inviters-header-image-leave-active {
+    transition: all 350ms ease-in-out;
+}
+
+.top-inviters-header-title-enter-from,
+.top-inviters-header-title-leave-to {
+    opacity: 0;
+    transform: translateY(45%);
+}
+.top-inviters-header-title-enter-to,
+.top-inviters-header-title-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.top-inviters-header-title-enter-active,
+.top-inviters-header-title-leave-active {
+    transition: all 400ms ease-in-out;
+}
+
+.top-inviters-header-description-enter-from,
+.top-inviters-header-description-leave-to {
+    opacity: 0;
+    transform: translateY(70%);
+}
+.top-inviters-header-description-enter-to,
+.top-inviters-header-description-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.top-inviters-header-description-enter-active,
+.top-inviters-header-description-leave-active {
+    transition: all 350ms ease-in-out;
+}
+
+.top-inviters-invite-enter-from,
+.top-inviters-invite-leave-to {
+    opacity: 0;
+    transform: translateY(30%);
+}
+.top-inviters-invite-enter-to,
+.top-inviters-invite-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.top-inviters-invite-enter-active,
+.top-inviters-invite-leave-active {
+    transition: all 400ms ease-in-out;
+}
+
+.top-inviters-content-enter-from,
+.top-inviters-content-leave-to {
+    opacity: 0;
+    transform: translateY(5%);
+}
+.top-inviters-content-enter-to,
+.top-inviters-content-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.top-inviters-content-enter-active,
+.top-inviters-content-leave-active {
+    transition: all 450ms ease-in-out;
+}
+
+.top-inviters-show-loading-enter-from,
+.top-inviters-show-loading-leave-to {
+    opacity: 0;
+}
+.top-inviters-show-loading-enter-to,
+.top-inviters-show-loading-leave-from {
+    opacity: 1;
+}
+.top-inviters-show-loading-enter-active,
+.top-inviters-show-loading-leave-active {
+    transition: all 250ms ease-in-out;
+}

@@ -1,0 +1,100 @@
+.top-players-header-image-enter-from,
+.top-players-header-image-leave-to {
+	opacity: 0;
+	transform: translateY(10%);
+}
+.top-players-header-image-enter-to,
+.top-players-header-image-leave-from {
+	opacity: 1;
+	transform: translateY(0);
+}
+.top-players-header-image-enter-active,
+.top-players-header-image-leave-active {
+	transition: all 350ms ease-in-out;
+}
+
+.top-players-header-title-enter-from,
+.top-players-header-title-leave-to {
+	opacity: 0;
+	transform: translateY(40%);
+}
+.top-players-header-title-enter-to,
+.top-players-header-title-leave-from {
+	opacity: 1;
+	transform: translateY(0);
+}
+.top-players-header-title-enter-active,
+.top-players-header-title-leave-active {
+	transition: all 400ms ease-in-out;
+}
+
+.top-players-header-description-enter-from,
+.top-players-header-description-leave-to {
+	opacity: 0;
+	transform: translateY(65%);
+}
+.top-players-header-description-enter-to,
+.top-players-header-description-leave-from {
+	opacity: 1;
+	transform: translateY(0);
+}
+.top-players-header-description-enter-active,
+.top-players-header-description-leave-active {
+	transition: all 350ms ease-in-out;
+}
+
+.top-players-content-enter-from,
+.top-players-content-leave-to {
+	opacity: 0;
+	transform: translateY(5%);
+}
+.top-players-content-enter-to,
+.top-players-content-leave-from {
+	opacity: 1;
+	transform: translateY(0);
+}
+.top-players-content-enter-active,
+.top-players-content-leave-active {
+	transition: all 450ms ease-in-out;
+}
+
+.top-players-show-loading-enter-from,
+.top-players-show-loading-leave-to {
+	opacity: 0;
+}
+.top-players-show-loading-enter-to,
+.top-players-show-loading-leave-from {
+	opacity: 1;
+}
+.top-players-show-loading-enter-active,
+.top-players-show-loading-leave-active {
+	transition: all 250ms ease-in-out;
+}
+
+.top-players-empty-list-title-enter-from,
+.top-players-empty-list-title-leave-to {
+	transform: translateY(20%);
+}
+.top-players-empty-list-title-enter-to,
+.top-players-empty-list-title-leave-from {
+	transform: translateY(0);
+}
+.top-players-empty-list-title-enter-active,
+.top-players-empty-list-title-leave-active {
+	transition: all 200ms ease-in-out;
+}
+
+.top-players-empty-list-description-enter-from,
+.top-players-empty-list-description-leave-to {
+	transform: translateY(15%);
+	opacity: 0;
+}
+.top-players-empty-list-description-enter-to,
+.top-players-empty-list-description-leave-from {
+	transform: translateY(0);
+	opacity: 1;
+}
+.top-players-empty-list-description-enter-active,
+.top-players-empty-list-description-leave-active {
+	transition: all 300ms ease-in-out;
+}

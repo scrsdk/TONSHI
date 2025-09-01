@@ -1,0 +1,23 @@
+.tasks-check-in {
+    margin-bottom: 16px;
+    background: rgb(24 24 31 / 50%);
+    padding: 14px 16px;
+    border-radius: 12px;
+}
+.tasks-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #e1e1e1;
+    margin-bottom: 6px;
+}
+.tasks-description {
+    font-weight: 500;
+    font-size: 14px;
+    color: #585d6e;
+}
+.tasks-check-in .list-of-check-in {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(50% - 9px), 1fr));
+    grid-gap: 16px 18px;
+}

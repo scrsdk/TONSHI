@@ -1,0 +1,29 @@
+.tasks-category .tasks-category-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+.tasks-category-not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 6px;
+    max-height: 200px;
+    height: 200px;
+}
+.tasks-category-not-found .styled-icon {
+    width: 26px;
+    height: 26px;
+    color: #585d6e;
+}
+.tasks-category-not-found .text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 167%;
+    text-align: center;
+    color: #585d6e;
+    opacity: .875;
+    max-width: 200px;
+}

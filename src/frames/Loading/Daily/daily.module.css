@@ -1,0 +1,136 @@
+.loading-body-after {
+    padding-top: 10px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.loading-daily-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: calc(100% - 90px);
+    padding: 0 0 calc(110px + var(--more-offset-bottom)) 0;
+}
+.loading-daily-content .loading-daily-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 25px;
+    height: 100%;
+}
+.loading-daily-content .loading-daily-icon {
+    width: 148px;
+    height: 148px;
+    flex-shrink: 0;
+    background-image: url("~/assets/images/daily-rewards-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation-name: AnimatedDailyIcon;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes AnimatedDailyIcon {
+    from {
+        transform: translateY(10px) scale(.97);
+        animation-timing-function: ease-out;
+    }
+    50% {
+        transform: translateY(0px) scale(1);
+        animation-timing-function: ease-out;
+    }
+    to {
+        transform: translateY(10px) scale(.97);
+    }
+}
+.loading-daily-content .loading-daily-title {
+    margin-top: 14px;
+    font-weight: 600;
+    font-size: 28px;
+    text-align: center;
+    color: #fff;
+}
+.loading-daily-content .loading-daily-rewards {
+    width: 100%;
+}
+.loading-daily-content .loading-daily-rewards .loading-daily-rewards-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+.loading-daily-content .loading-daily-amount {
+    background: rgb(0 0 0 / 40%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 18px 16px;
+}
+.loading-daily-content .loading-daily-amount .styled-icon {
+    width: 36px;
+    height: 36px;
+    padding-bottom: 8px;
+}
+.loading-daily-content .loading-daily-amount .amount {
+    font-weight: 600;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+}
+.loading-daily-content .loading-daily-amount .name {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #585D6E;
+    margin-top: 4px;
+}
+.loading-daily-content .loading-daily-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px;
+}
+.loading-daily-content .loading-daily-text span {
+    color: #585D6E;
+    opacity: .785;
+    font-weight: 500;
+    font-size: 14px;
+}
+.loading-bottom {
+    width: 100%;
+    position: absolute;
+    bottom: var(--more-offset-bottom);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: calc(100% - 90px);
+}
+.loading-bottom .loading-button {
+    color: #000;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    padding: 14px 0;
+    font-weight: 600;
+    font-size: 16px;
+    transition: opacity 300ms ease-in-out;
+}
+.loading-bottom .loading-button:hover {
+    opacity: .875;
+}

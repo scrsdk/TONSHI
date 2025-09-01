@@ -1,0 +1,54 @@
+.tasks-wallet {
+	margin-bottom: 14px;
+	display: flex;
+	column-gap: 10px;
+}
+.tasks-wallet .button-wallet {
+	width: 100%;
+	height: 45px;
+	background-color: #4599e6;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	column-gap: 6px;
+	justify-content: center;
+}
+.tasks-wallet .button-wallet .styled-icon {
+	width: 16px;
+	height: 16px;
+	color: #fff;
+}
+.tasks-wallet .button-wallet .name {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 83%;
+	color: #fff;
+}
+.tasks-wallet .wallet-icon {
+	width: 45px;
+	height: 45px;
+	border-radius: 12px;
+	flex-shrink: 0;
+	overflow: hidden;
+	box-shadow: rgba(255, 255, 255, 0.05) 0 0 20px;
+}
+.tasks-wallet .wallet-icon .exchange-icon {
+	width: 100%;
+	height: 100%;
+}
+.tasks-wallet .button-logout {
+	width: 45px;
+	padding: 0;
+	height: 45px;
+	background-color: #18181f;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+.tasks-wallet .button-logout .styled-icon {
+	width: 28px;
+	height: 28px;
+	color: #585d6e;
+}

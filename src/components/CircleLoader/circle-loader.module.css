@@ -1,0 +1,22 @@
+:root {
+    --circle-loader-border-size: 4px;
+    --circle-loader-border-line-color: rgba(255, 255, 255, .15);
+    --circle-loader-border-full-color: rgba(255, 255, 255, .09);
+}
+.loader {
+    border: var(--circle-loader-border-size) solid var(--circle-loader-border-full-color);
+    border-bottom-color: var(--circle-loader-border-line-color);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation360 700ms linear infinite;
+    flex-shrink: 0;
+}
+@keyframes rotation360 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,60 @@
+.league-farm-button {
+    background-color: #4599e6;
+    border-radius: 16px;
+    padding: 15px 17px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 50px;
+}
+.league-farm-button:disabled {
+    background-color: #18181f;
+}
+.league-farm-button:disabled .league-farm-progress {
+    background: rgba(53, 53, 68, 0.25);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 300ms ease-in-out;
+}
+.league-farm-button .name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+}
+.league-farm-button .name .amount {
+    font-size: 16px;
+}
+.league-farm-button.button-name-flex .name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 4px;
+}
+.league-farm-button.button-name-flex .name .styled-icon {
+    width: 18px;
+    height: 18px;
+}
+.league-farm-button:not(.button-success-farm).button-name-flex .name {
+    color: #585d6e;
+}
+.league-farm-button.button-success-farm {
+    background-color: #77b62e;
+}
+.league-farm-button.button-success-farm .name {
+    color: #fff;
+}
+.league-farm-button:disabled .time {
+    display: flex;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 83%;
+    color: #585d6e;
+    position: absolute;
+    right: 18px;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,29 @@
+.tasks-categories-enter-from,
+.tasks-categories-leave-to {
+    opacity: 0;
+    transform: translateY(-20%);
+}
+.tasks-categories-enter-to,
+.tasks-categories-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.tasks-categories-enter-active,
+.tasks-categories-leave-active {
+    transition: all 400ms ease-in-out;
+}
+
+.tasks-wallet-enter-from,
+.tasks-wallet-leave-to {
+    opacity: 0;
+    transform: translateY(-20%);
+}
+.tasks-wallet-enter-to,
+.tasks-wallet-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.tasks-wallet-enter-active,
+.tasks-wallet-leave-active {
+    transition: all 400ms ease-in-out;
+}

@@ -1,0 +1,172 @@
+.home {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+}
+.home .home-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 15px 0;
+}
+.home .home-user .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 10px solid rgba(69, 153, 230, 0.15);
+    flex-shrink: 0;
+    margin-bottom: 16px;
+    position: relative;
+}
+.home .home-user .avatar:after,
+.home .home-user .avatar:before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url("~/assets/images/avatar-chip-stars.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: AnimatedMovementChipStars;
+}
+@keyframes AnimatedMovementChipStars {
+    from {
+        transform: translate(-10px, -10px);
+        animation-timing-function: ease-out;
+    }
+    50% {
+        transform: translate(0px, 0px);
+        animation-timing-function: ease-out;
+    }
+    to {
+        transform: translate(-10px, -10px);
+    }
+}
+.home .home-user .avatar:after {
+    bottom: -25px;
+    left: -15px;
+}
+.home .home-user .avatar:before {
+    top: -15px;
+    right: -25px;
+    rotate: 180deg;
+}
+.home .home-user .avatar .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-image: url("../../../assets/images/no-image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.home .home-user .username {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    margin: 18px 0 24px 0
+}
+.home .home-user .balance {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    justify-content: center;
+}
+.home .home-user .balance .styled-icon {
+    width: 42px;
+    height: 42px;
+}
+.home .home-user .balance .amount {
+    font-weight: 600;
+    font-size: 36px;
+    color: #fff;
+}
+.home .home-farm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    padding-bottom: 14px;
+}
+.home .home-farm .home-league {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.home .home-farm .home-league .league-block {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+.home .home-farm .home-league .league-block .league-icon {
+    border-radius: 111px;
+    width: 48px;
+    background: #18181f;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home .home-farm .home-league .league-block .league-icon .league-image {
+    width: 28px;
+    height: 24px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.home .home-farm .home-league .league-block .league-icon .league-image {
+    width: 28px;
+    height: 24px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.home .home-farm .home-league[data-league="bronze"] .league-block .league-icon .league-image,
+.home .home-farm .home-league[data-league="silver"] .league-block .league-icon .league-image,
+.home .home-farm .home-league[data-league="copper"] .league-block .league-icon .league-image {
+    width: 24px;
+    height: 28px;
+}
+.home .home-farm .home-league .league-block .league-info {
+    display: flex;
+    row-gap: 4px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.home .home-farm .home-league .league-block .league-info .league-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 107%;
+    color: #fff;
+}
+.home .home-farm .home-league .league-block .league-info .league-place {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 125%;
+    color: #585d6e;
+    display: flex;
+    align-items: center;
+    column-gap: 1px;
+}
+.home .home-farm .home-league .league-block .league-info .styled-icon {
+    width: 18px;
+    height: 18px;
+    padding-top: 1px;
+}
+.home .home-farm .home-league .league-button {
+    background: rgba(69, 153, 230, 0.15);
+    border-radius: 111px;
+    padding: 16px 0;
+    width: 118px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 82%;
+    color: #4599e6;
+}

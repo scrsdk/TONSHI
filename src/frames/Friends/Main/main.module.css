@@ -1,0 +1,133 @@
+.friends {
+    padding-bottom: 32px;
+}
+.friends .banner {
+    background-color: #16A58B;
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 4px;
+}
+.friends .banner .title {
+    font-weight: 700;
+    font-size: 17px;
+    color: #fff;
+}
+.friends .banner .description {
+    font-weight: 500;
+    font-size: 15px;
+    color: #AAFFF0;
+}
+.friends .features {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+.friends .features .item {
+    background-color: rgb(24 24 31 / 60%);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 18px 15px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 10px;
+}
+.friends .features .item.more {
+    justify-content: space-between;
+}
+.friends .features .item.more .left-block {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.friends .features .item.more .button {
+    background: rgba(53, 53, 68, 0.2);
+    border-radius: 111px;
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 80%;
+    color: #e1e1e1;
+}
+.friends .features .item .image {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.friends .features .item .info {
+    text-align: left;
+}
+.friends .features .item .info .name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #fff;
+}
+.friends .features .item .info .description {
+    font-weight: 500;
+    line-height: 1.43;
+    font-size: 12px;
+    color: #585D6E;
+    padding-top: 2px;
+}
+.friends .invite {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    row-gap: 12px;
+    flex-wrap: wrap;
+}
+.friends .invite .top-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 12px;
+    width: 100%;
+}
+.friends .invite .button {
+    height: 48px;
+    border-radius: 12px;
+    background-color: #4599E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+}
+.friends .invite .button.invite-story {
+    width: 100%;
+    background-color: #35354466;
+}
+.friends .invite .button .styled-icon {
+    width: 14px;
+    height: 14px;
+    color: #fff;
+}
+.friends .invite .button .name {
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+}
+.friends .invite .button.invite-share {
+    width: 100%;
+}
+.friends .invite .button.invite-copy {
+    width: 48px;
+    flex-shrink: 0;
+    background: rgba(69, 153, 230, 0.35);
+}
+.friends .invite .button.invite-copy .styled-icon {
+    color: #4599e6;
+    width: 24px;
+    height: 24px;
+}

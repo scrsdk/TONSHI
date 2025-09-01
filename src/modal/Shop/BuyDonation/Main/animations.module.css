@@ -1,0 +1,42 @@
+.info-enter-from,
+.info-leave-to {
+	opacity: 0;
+}
+.info-enter-to,
+.info-leave-from {
+	opacity: 1;
+}
+.info-enter-active,
+.info-leave-active {
+	transition: all 320ms ease-in-out;
+}
+
+.button-stars-enter-from,
+.button-stars-leave-to {
+	opacity: 0;
+	transform: translateY(30%);
+}
+.button-stars-enter-to,
+.button-stars-leave-from {
+	opacity: 1;
+	transform: translateY(0);
+}
+.button-stars-enter-active,
+.button-stars-leave-active {
+	transition: all 260ms ease-in-out;
+}
+
+.button-ton-enter-from,
+.button-ton-leave-to {
+	opacity: 0;
+	transform: translateY(45%);
+}
+.button-ton-enter-to,
+.button-ton-leave-from {
+	opacity: 1;
+	transform: translateY(0);
+}
+.button-ton-enter-active,
+.button-ton-leave-active {
+	transition: all 300ms ease-in-out;
+}

@@ -1,0 +1,51 @@
+.window-container {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 111;
+    background-color: #0B0B0E;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.window-container .window-header {
+    position: sticky;
+    width: calc(100% - 24px);
+    top: 0;
+    left: 0;
+    height: 150px;
+    padding: 12px;
+    background: linear-gradient(to top, #0b0b0e00 0%, #0b0b0e 100%);
+    pointer-events: none;
+}
+.window-container .window-header .window-close-button {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    justify-content: center;
+    border-radius: 14px;
+    width: 88px;
+    height: 40px;
+    background-color: #18181f;
+    pointer-events: all;
+}
+.window-container .window-header .window-close-button .styled-icon {
+    width: 18px;
+    color: #585D6E;
+    height: 18px;
+    margin-bottom: -1px;
+}
+.window-container .window-header .window-close-button .name {
+    color: #585D6E;
+    font-weight: 600;
+    font-size: 14px;
+}
+.window-container .window-body {
+    padding: 0 20px var(--modal-offset-bottom) 20px;
+    position: absolute;
+    width: calc(100% - 40px);
+    top: 20px;
+    z-index: -1;
+    height: calc(100% - calc(20px + var(--modal-offset-bottom)));
+}

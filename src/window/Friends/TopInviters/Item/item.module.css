@@ -1,0 +1,101 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    border-bottom: 1px solid rgb(88 93 110 / 10%);
+    background-color: #121219;
+    padding: 12px 0 12px 0;
+}
+.item.my-item {
+    position: sticky;
+    overflow-anchor: none;
+    bottom: 0;
+    left: 0;
+}
+.item .left-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+}
+.item .left-block .place {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+}
+.item .left-block .place .num {
+    font-weight: 600;
+    font-size: 20px;
+    color: #f1f1f1;
+}
+.item .left-block .place .place-medal {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+}
+.item .left-block .avatar {
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../../../assets/images/no-image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+.item .left-block .info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1px;
+    justify-content: center;
+    align-items: flex-start;
+}
+.item .left-block .info .name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+}
+.item .left-block .info .friends-text {
+    font-weight: 500;
+    font-size: 14px;
+    color: #585d6e;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    column-gap: 3px;
+}
+.item .left-block .info .friends-text .count {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 113%;
+    color: #606370;
+}
+.item .amount-value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 4px;
+}
+.item .amount-value .styled-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.item .amount-value .amount {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: 6px;
+}
+/*.item .amount-value .amount .small-text {*/
+/*    font-weight: 500;*/
+/*    font-size: 11px;*/
+/*    color: #585d6e;*/
+/*}*/
+.item .amount-value .amount .value {
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+}

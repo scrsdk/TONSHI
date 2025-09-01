@@ -1,0 +1,14 @@
+.window-container-enter-from,
+.window-container-leave-to {
+    opacity: 0;
+    transform: translateY(4%);
+}
+.window-container-enter-to,
+.window-container-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.window-container-enter-active,
+.window-container-leave-active {
+    transition: all 200ms ease-in-out;
+}

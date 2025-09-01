@@ -1,0 +1,88 @@
+.connect-wallet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+.connect-wallet .connect-foreground {
+    background-color: rgba(0, 0, 0, .84);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+.connect-wallet .content-block {
+    width: 240px;
+    border-radius: 20px;
+    background-color: #121217;
+    padding: 22px 14px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 20px 20px;
+    border: 1px solid rgba(53, 53, 68, 0.20);
+    position: relative;
+}
+.connect-wallet .content-block .close-content {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #FF716B;
+    border-radius: 111px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(53, 53, 68, 0.20);
+}
+.connect-wallet .content-block .close-content .styled-icon {
+    color: #fff;
+    width: 14px;
+    height: 14px;
+}
+.connect-wallet .content-block .title {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+.connect-wallet .content-block .title .text {
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+}
+.connect-wallet .content-block .title .image {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    box-shadow: rgba(255, 255, 255, 0.15) 0 0 20px 0;
+}
+.connect-wallet .content-block .description {
+    font-weight: 500;
+    font-size: 14px;
+    color: #585d6e;
+    margin-top: 6px;
+    text-align: center;
+}
+.connect-wallet .content-block .button-connect {
+    height: 36px;
+    background-color: #4599E6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    justify-content: center;
+    padding: 0 20px;
+    color: #fff;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 13px;
+}

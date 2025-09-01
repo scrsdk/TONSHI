@@ -1,0 +1,42 @@
+.tasks-category-enter-from,
+.tasks-category-leave-to {
+    transform: translateY(20%);
+    opacity: 0;
+}
+.tasks-category-enter-to,
+.tasks-category-leave-from {
+    transform: translateY(0);
+    opacity: 1;
+}
+.tasks-category-enter-active,
+.tasks-category-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.tasks-category-not-found-title-enter-from,
+.tasks-category-not-found-title-leave-to {
+    transform: translateY(20%);
+}
+.tasks-category-not-found-title-enter-to,
+.tasks-category-not-found-title-leave-from {
+    transform: translateY(0);
+}
+.tasks-category-not-found-title-enter-active,
+.tasks-category-not-found-title-leave-active {
+    transition: all 200ms ease-in-out;
+}
+
+.tasks-category-not-found-description-enter-from,
+.tasks-category-not-found-description-leave-to {
+    transform: translateY(15%);
+    opacity: 0;
+}
+.tasks-category-not-found-description-enter-to,
+.tasks-category-not-found-description-leave-from {
+    transform: translateY(0);
+    opacity: 1;
+}
+.tasks-category-not-found-description-enter-active,
+.tasks-category-not-found-description-leave-active {
+    transition: all 300ms ease-in-out;
+}

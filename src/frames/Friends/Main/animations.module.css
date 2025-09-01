@@ -1,0 +1,74 @@
+.friends-banner-enter-from,
+.friends-banner-leave-to {
+    opacity: 0;
+    transform: translateY(-10%);
+}
+.friends-banner-enter-to,
+.friends-banner-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.friends-banner-enter-active,
+.friends-banner-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.friends-features-1-enter-from,
+.friends-features-1-leave-to {
+    opacity: 0;
+    transform: translateY(-40%);
+}
+.friends-features-1-enter-to,
+.friends-features-1-leave-from {
+    opacity: 1;
+    transform: translateX(0);
+}
+.friends-features-1-enter-active,
+.friends-features-1-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.friends-features-2-enter-from,
+.friends-features-2-leave-to {
+    opacity: 0;
+    transform: translateY(-30%);
+}
+.friends-features-2-enter-to,
+.friends-features-2-leave-from {
+    opacity: 1;
+    transform: translateX(0);
+}
+.friends-features-2-enter-active,
+.friends-features-2-leave-active {
+    transition: all 350ms ease-in-out;
+}
+
+.friends-features-3-enter-from,
+.friends-features-3-leave-to {
+    opacity: 0;
+    transform: translateY(-20%);
+}
+.friends-features-3-enter-to,
+.friends-features-3-leave-from {
+    opacity: 1;
+    transform: translateX(0);
+}
+.friends-features-3-enter-active,
+.friends-features-3-leave-active {
+    transition: all 400ms ease-in-out;
+}
+
+.friends-invite-enter-from,
+.friends-invite-share-leave-to {
+    opacity: 0;
+    transform: translateY(-40%);
+}
+.friends-invite-enter-to,
+.friends-invite-leave-from {
+    opacity: 1;
+    transform: translateX(0);
+}
+.friends-invite-enter-active,
+.friends-invite-leave-active {
+    transition: all 400ms ease-in-out;
+}

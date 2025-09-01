@@ -1,0 +1,73 @@
+.shop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.shop .shop-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 14px;
+    height: calc(100% - 82px);
+    width: 100%;
+}
+.shop .shop-balance {
+    border-radius: 14px;
+    background-color: #18181F;
+    max-width: 295px;
+    margin: 0 auto;
+    width: 100%;
+}
+.shop .shop-balance .balance-body {
+    padding: 10px 10px 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 15px;
+}
+.shop .shop-balance .balance-body .title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #585D6E;
+    line-height: 71%;
+}
+.shop .shop-balance .balance-body .block {
+    background-color: rgba(53, 53, 68, 0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 6px;
+    width: 100%;
+    padding: 10px 0;
+}
+.shop .shop-balance .balance-body .block .styled-icon {
+    width: 20px;
+    height: 20px;
+}
+.shop .shop-balance .balance-body .block .value {
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    line-height: 71%;
+}
+.shop .list-of-donations {
+    display: grid;
+    grid-template-columns: repeat(2, 142px);
+    grid-gap: 12px;
+    margin: 0 auto;
+    max-width: 295px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    padding-bottom: 12px;
+}
+.shop .donations-loading {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 295px;
+}

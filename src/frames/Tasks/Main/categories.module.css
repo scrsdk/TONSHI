@@ -1,0 +1,32 @@
+.tasks-categories {
+    display: flex;
+    overflow-y: auto;
+    column-gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 4px;
+}
+.tasks-categories::-webkit-scrollbar {
+    display: block;
+    height: 4px;
+}
+.tasks-categories::-webkit-scrollbar-track {
+    background-color: #18181F;
+}
+.tasks-categories::-webkit-scrollbar-thumb {
+    background-color: rgba(53, 53, 68, .40);
+}
+.tasks-categories::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(53, 53, 68, .50);
+}
+.tasks-categories .tasks-category {
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #585D6E;
+    background-color: rgb(24 24 31 / 60%);
+}
+.tasks-categories .tasks-category.active {
+    color: #f1f1f1;
+    background-color: #4599E6;
+}

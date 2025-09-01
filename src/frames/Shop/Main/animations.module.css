@@ -1,0 +1,29 @@
+.shop-balance-enter-from,
+.shop-balance-leave-to {
+    opacity: 0;
+    transform: translateY(-20%);
+}
+.shop-balance-enter-to,
+.shop-balance-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.shop-balance-enter-active,
+.shop-balance-leave-active {
+    transition: all 300ms ease-in-out;
+}
+
+.donations-list-enter-from,
+.donations-list-leave-to {
+    opacity: 0;
+    transform: translateY(-3%);
+}
+.donations-list-enter-to,
+.donations-list-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+.donations-list-enter-active,
+.donations-list-leave-active {
+    transition: all 300ms ease-in-out;
+}

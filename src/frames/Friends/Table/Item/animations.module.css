@@ -1,0 +1,18 @@
+:root {
+    --friends-item-animation-ms: 200ms;
+}
+
+.item-enter-from,
+.item-leave-to {
+    opacity: 0;
+    transform: translateY(25%);
+}
+.item-enter-to,
+.item-leave-from {
+    opacity: 1;
+    transform: translateY(0%);
+}
+.item-enter-active,
+.item-leave-active {
+    transition: all var(--friends-item-animation-ms) ease-in-out;
+}

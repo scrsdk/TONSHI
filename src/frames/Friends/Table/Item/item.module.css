@@ -1,0 +1,87 @@
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    border-bottom: 1px solid #18181F;
+    padding-bottom: 12px;
+}
+.user-item .left-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+}
+.user-item .left-block .avatar {
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../../../assets/images/no-image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.user-item .left-block .info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    justify-content: center;
+    align-items: flex-start;
+}
+.user-item .left-block .info .name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+}
+.user-item .left-block .info .league {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 4px;
+}
+.user-item .left-block .info .league .league-name {
+    font-weight: 500;
+    font-size: 12px;
+    color: #585d6e;
+}
+.user-item .left-block .info .league .league-icon {
+    width: 14px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-item .left-block .info .league .league-icon .league-image {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.user-item .amount-value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 4px;
+}
+.user-item .amount-value .styled-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.user-item .amount-value .amount {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: 6px;
+}
+.user-item .amount-value .amount .small-text {
+    font-weight: 500;
+    font-size: 12px;
+    color: #585d6e;
+}
+.user-item .amount-value .amount .value {
+    font-weight: 600;
+    font-size: 23px;
+    color: #fff;
+}

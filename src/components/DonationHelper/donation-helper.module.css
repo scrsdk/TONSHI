@@ -1,0 +1,201 @@
+.donation-helper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+.donation-helper .donation-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+}
+.donation-helper .donation-content {
+    max-width: 80%;
+    width: 100%;
+    background-color: rgba(24, 24, 31, .45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 2px solid rgba(53, 53, 68, 0.25);
+    position: relative;
+    z-index: 2;
+}
+.donation-helper .donation-content .close-content {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    background-color: rgba(255, 113, 107, .85);
+    border-radius: 111px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(53, 53, 68, 0.20);
+}
+.donation-helper .donation-content .close-content:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+.donation-helper .donation-content .close-content .styled-icon {
+    color: #fff;
+    width: 14px;
+    height: 14px;
+}
+.donation-helper .donation-content .donation-body {
+    padding: 16px;
+}
+.donation-helper .donation-content .donation-body .vtono-balance {
+    max-width: 260px;
+    margin: 0 auto;
+    width: 100%;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #585D6E;
+    line-height: 71%;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .block {
+    background-color: rgba(53, 53, 68, 0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+    margin-left: 12px;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .block .styled-icon {
+    width: 20px;
+    height: 20px;
+    padding-right: 6px;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .block .styled-add-icon {
+    width: 17px;
+    height: 17px;
+    padding-left: 4px;
+    opacity: .875;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .block .value {
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    line-height: 71%;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .button-add {
+    background-color: #4599E6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .button-add:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+.donation-helper .donation-content .donation-body .vtono-balance .balance-body .button-add .styled-icon {
+    width: 14px;
+    height: 14px;
+}
+.donation-helper .donation-content .donation-body .content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 25px;
+    padding-top: 30px;
+}
+.donation-helper .donation-content .donation-body .content .image {
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+    background-image: url("~/assets/images/statue-icon.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.donation-helper .donation-content .donation-body .content .name {
+    font-weight: 600;
+    font-size: 18px;
+    color: #e1e1e1;
+    text-align: center;
+    padding: 0 35px;
+}
+.donation-helper .donation-content .donation-body .row-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, calc(33% - 6px));
+    align-items: center;
+    column-gap: 12px;
+    margin-top: 16px;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .button {
+    width: 100%;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 -50px 36px -28px inset;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .button.button-disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .button.button-default {
+    background-color: #FAD31D;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .button.button-primary {
+    background-color: #4599e6;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .button.button-green {
+    background-color: #8BD239;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .info {
+    background-color: rgba(53, 53, 68, 0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 6px;
+    padding: 10px 0;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .info .name {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 600;
+    max-width: 46px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.donation-helper .donation-content .donation-body .row-buttons .button-group .info .styled-icon {
+    width: 16px;
+    height: 16px;
+}

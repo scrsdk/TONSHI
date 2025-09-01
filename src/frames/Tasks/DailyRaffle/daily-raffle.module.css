@@ -1,0 +1,168 @@
+.daily-raffle {
+	background-color: #18181f7f;
+	border-radius: 12px;
+	padding: 14px 16px;
+	margin-bottom: 16px;
+}
+.daily-raffle .daily-raffle-title {
+	margin-bottom: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	column-gap: 8px;
+}
+.daily-raffle .daily-raffle-title .daily-raffle-title-text {
+	font-size: 20px;
+	color: #e1e1e1;
+	font-weight: 700;
+}
+.daily-raffle .daily-raffle-mini-badges {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	column-gap: 8px;
+	margin-bottom: 12px;
+}
+.daily-raffle .daily-raffle-mini-badges .daily-raffle-mini-badge {
+	border-radius: 12px;
+	padding: 6px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	font-size: 14px;
+}
+.daily-raffle .daily-raffle-mini-badges .daily-raffle-mini-badge .styled-icon {
+	width: 17px;
+	height: 17px;
+}
+.daily-raffle
+	.daily-raffle-mini-badges
+	.daily-raffle-mini-badge.daily-raffle-mini-badge-green {
+	background-color: #8ed76c7a;
+	color: #8ed76c;
+}
+.daily-raffle
+	.daily-raffle-mini-badges
+	.daily-raffle-mini-badge.daily-raffle-mini-badge-red {
+	background-color: #ff624842;
+	color: #ff6248;
+}
+.daily-raffle
+	.daily-raffle-mini-badges
+	.daily-raffle-mini-badge.daily-raffle-mini-badge-users {
+	background-color: #3498db42;
+	column-gap: 4px;
+	color: #3498db;
+}
+.daily-raffle .daily-raffle-description {
+	font-weight: 500;
+	font-size: 14px;
+	color: #585d6e;
+	margin-bottom: 12px;
+}
+.daily-raffle-block {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 14px;
+}
+.daily-raffle-last-winner {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+}
+.daily-raffle-last-winner .daily-raffle-info-title {
+	background-color: #18181fcc;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	column-gap: 2px;
+	padding: 3px 0px;
+	font-weight: 600;
+	font-size: 11px;
+	width: 42px;
+	transform: rotate(270deg);
+	color: #585d6e;
+	margin: 0 -9px 0 -11px;
+}
+.daily-raffle-last-winner .daily-raffle-info-avatar {
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	overflow: hidden;
+}
+.daily-raffle-last-winner .daily-raffle-info-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.daily-raffle-last-winner .daily-raffle-info-data {
+	display: flex;
+	align-items: start;
+	row-gap: 1px;
+	flex-direction: column;
+	justify-content: center;
+}
+.daily-raffle-last-winner .daily-raffle-info-data .daily-raffle-info-name {
+	font-weight: 600;
+	font-size: 18px;
+	color: #fff;
+	max-width: 85px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.daily-raffle-last-winner .daily-raffle-info-data .daily-raffle-info-amount {
+	display: flex;
+	align-items: center;
+	column-gap: 4px;
+}
+.daily-raffle-last-winner
+	.daily-raffle-info-data
+	.daily-raffle-info-amount
+	.styled-icon {
+	width: 17px;
+	height: 17px;
+}
+.daily-raffle-last-winner
+	.daily-raffle-info-data
+	.daily-raffle-info-amount
+	.amount {
+	font-size: 16px;
+	font-weight: 600;
+	color: #0088cc;
+}
+.daily-raffle-block .daily-raffle-timer {
+	background: rgba(142, 215, 108, 0.3);
+	border-radius: 111px;
+	padding: 16px 0;
+	width: 120px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 82%;
+	color: #8ed76c;
+	text-align: center;
+}
+
+.daily-raffle-badge {
+	border-radius: 14px;
+	width: calc(100% - 36px);
+	padding: 12px 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	font-size: 14px;
+}
+.daily-raffle-badge-info {
+	background-color: rgba(64, 166, 216, 0.3);
+	color: #3498db;
+	margin-bottom: 12px;
+}
+.daily-raffle-badge-danger {
+	background-color: rgba(234, 66, 38, 0.3);
+	color: #ff6248;
+}

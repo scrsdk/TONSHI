@@ -1,0 +1,170 @@
+.top-players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 20px);
+    max-width: 340px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.top-players .header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+.top-players .header .league {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 4px;
+    height: 205px;
+}
+.top-players .header .league .arrow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.top-players .header .league .arrow.arrow-disabled {
+    pointer-events: none;
+    opacity: .1;
+}
+.top-players .header .league .arrow .styled-icon {
+    width: 100%;
+}
+.top-players .header .league .arrow.arrow-left {
+    left: 0;
+}
+.top-players .header .league .arrow.arrow-right {
+    right: 0;
+}
+.top-players .header .league .image-icon {
+    height: 200px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    position: relative;
+}
+.top-players .header .league[data-current-league="bronze"] .image-icon,
+.top-players .header .league[data-current-league="silver"] .image-icon,
+.top-players .header .league[data-current-league="copper"] .image-icon {
+    width: 150px;
+}
+.top-players .header .league[data-current-league="platinum"] .image-icon {
+    width: 200px;
+}
+.top-players .header .league[data-current-league="gold"] .image-icon,
+.top-players .header .league[data-current-league="master"] .image-icon {
+    width: 215px;
+}
+.top-players .header .info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 8px;
+    padding-bottom: 12px;
+    width: 100%;
+}
+.top-players .header .info .title {
+    font-weight: 600;
+    font-size: 26px;
+    color: #fff;
+}
+.top-players .header .info .progress {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 4px;
+}
+.top-players .header .info .progress .name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #585d6e;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.top-players .header .info .progress .line {
+    width: 100%;
+    height: 14px;
+    border-radius: 10px;
+    background-color: #18181f;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.top-players .header .info .progress .line.line-opacity {
+    opacity: .35;
+}
+.top-players .header .info .progress .line.line-success .line-width {
+    background-color: #16A58B;
+}
+.top-players .header .info .progress .line .line-width {
+    background-color: #4599e6;
+    border-radius: 10px;
+    height: 14px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: opacity 200ms ease-in-out;
+}
+.top-players .content {
+    background-color: rgb(24 24 31 / 60%);
+    width: 100%;
+    border-radius: 14px;
+    height: 100%;
+    overflow-y: auto;
+}
+.top-players .content .content-body {
+    padding: 12px 10px;
+    height: calc(100% - 32px);
+}
+.top-players .content .content-body .content-items {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1000px;
+    height: 100%;
+}
+.top-players .content .content-body .content-items .list-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 8px;
+    height: 100%;
+    width: 100%;
+}
+.top-players .content .content-body .content-items .list-empty .styled-icon {
+    width: 26px;
+    height: 26px;
+    color: #585d6e;
+}
+.top-players .content .content-body .content-items .list-empty .text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 167%;
+    text-align: center;
+    color: #585d6e;
+    opacity: .875;
+    max-width: 190px;
+}
+.top-players .content .content-body .content-items.content-items-visible {
+    padding-left: 0;
+}
+.top-players .content .content-body .content-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.top-players .content .content-body .first-item {
+    padding-top: 0;
+}

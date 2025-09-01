@@ -1,0 +1,27 @@
+.item {
+	display: flex;
+	flex-direction: column;
+	row-gap: 4px;
+	align-items: center;
+	cursor: pointer;
+	transition: opacity 200ms ease-in-out;
+	width: 100%;
+}
+.item .styled-icon {
+	width: 18px;
+	height: 18px;
+}
+.item .styled-icon defs stop {
+	transition: stop-color 200ms ease-in-out;
+}
+.item .title {
+	text-align: center;
+	transition: color 200ms ease-in-out;
+	position: relative;
+	font-weight: 600;
+	font-size: 14px;
+	color: #4a4d59;
+}
+.item.active .title {
+	color: #fff;
+}
