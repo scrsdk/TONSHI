@@ -14,14 +14,14 @@ const descriptionLoadingText = computed(() => {
   if (props.state === 2) {
     const appImagesCount = appImages.length,
         loadedAppImagesCount = appImages.filter(image => image.loaded).length;
-    return `Let's get the app images (${loadedAppImagesCount}/${appImagesCount}) ${Math.trunc((loadedAppImagesCount / appImagesCount) * 100)}%`
+    return `Загрузка ресурсов CDN (${loadedAppImagesCount}/${appImagesCount}) ${Math.trunc((loadedAppImagesCount / appImagesCount) * 100)}%`
   }
   if (props.state === 3) {
     const appCdnImagesCount = appImages.filter(image => image.cdn).length,
         loadedAppCdnImagesCount = appImages.filter(image => image.cdn && image.loaded).length;
-    return `Let's get the cdn images (${loadedAppCdnImagesCount}/${appCdnImagesCount}) ${Math.trunc((loadedAppCdnImagesCount / appCdnImagesCount) * 100)}%`
+    return `Загрузка ресурсов CDN (${loadedAppCdnImagesCount}/${appCdnImagesCount}) ${Math.trunc((loadedAppCdnImagesCount / appCdnImagesCount) * 100)}%`
   }
-  return "We're running your information";
+  return "Мы запускаем вашу информацию";
 })
 </script>
 
