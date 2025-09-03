@@ -162,7 +162,7 @@ onMounted(async () => {
 								{{ currentLeague.name }}
 							</div>
 							<div :class="{ [MainStyle['league-place']]: true }">
-								You are in {{ numberWithSuffix(user.league.place) }} place
+								Вы на {{ numberWithSuffix(user.league.place) }} месте
 							</div>
 						</div>
 					</div>
@@ -171,7 +171,7 @@ onMounted(async () => {
 						:class="{ [MainStyle['league-button']]: true }"
 						@click="toggleWindow('home-top-players')"
 					>
-						Top players
+						Топ
 					</button>
 				</div>
 			</Animation>
