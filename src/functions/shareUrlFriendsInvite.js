@@ -1,5 +1,5 @@
 export default (friend_code, for_share = true) => {
     const url = import.meta.env.VITE_TELEGRAM_BOT + "/" + import.meta.env.VITE_TELEGRAM_WEBAPP_URI + "?startapp=" + friend_code,
-        text = "🌟Take a trip with Tonomo!🌟\nJoin us in an exciting adventure as we team up with Binance, Bybit, OKX, Bitget and ready for a powerful airdrop! Let’s earn $Tonomo together, use my invite link to dive into the fun!";
+        text = "🌟Совершите путешествие с Tonomo! 🌟\nПрисоединяйтесь к нам в захватывающем приключении, когда мы объединяемся с Binance, Bybit, OKX, Bitget и будем готовы к мощному AirDrop! Давайте вместе заработаем $Tonomo, используйте мою ссылку-приглашение, чтобы погрузиться!";
     return for_share ? ('https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text)) : url;
 }
