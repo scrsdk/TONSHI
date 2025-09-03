@@ -15,25 +15,25 @@ const router = useRouter()
       <div :class="{ [BottomMenuStyle['menu-items']]: true }">
         <Item
             icon="home"
-            title="Home"
+            title="Дом"
             :tap="() => router.push('/')"
             :active="route.path === '/'"
         />
         <Item
             icon="tasks"
-            title="Tasks"
+            title="Задания"
             :tap="() => router.push('/tasks')"
             :active="route.path === '/tasks'"
         />
         <Item
             icon="friends"
-            title="Friends"
+            title="Друзья"
             :tap="() => router.push('/friends')"
             :active="route.path === '/friends'"
         />
         <Item
             icon="shop"
-            title="Shop"
+            title="Магазин"
             :tap="() => router.push('/shop')"
             :active="route.path === '/shop'"
         />
