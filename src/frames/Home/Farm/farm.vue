@@ -40,7 +40,7 @@ const toggleFarm = async () => {
       !currentStatusFarming.value &&
       user.value.current_farm.unique !== null
   ) return toggleDonationHelper(
-      "Would you like to increase your farming to x2?",
+      "Хотели бы вы увеличить фарм до x2?",
       {name: "claim-farming"},
       [
         {type: 'free', text: 'x1'},
@@ -49,7 +49,7 @@ const toggleFarm = async () => {
       ]
   );
   return toggleDonationHelper(
-      "Would you like to reduce your farming to 12h?",
+      "Хотели бы вы сократить свой фарм до 12 часов?",
       {name: "start-farming"},
       [
         {type: 'free', text: '24h'},
@@ -113,7 +113,7 @@ onUnmounted(() => {
     >
       <template v-if="!props.loading">
         <div :class="{ [FarmStyle['league-farm-progress']]: true }" v-if="user.current_farm.unique !== null" :style="{ width: `${currentFarmingProgress}%` }"></div>
-        <div :class="{ [FarmStyle['name']]: true }" v-if="!user.current_farm.unique">Start farming</div>
+        <div :class="{ [FarmStyle['name']]: true }" v-if="!user.current_farm.unique">ЗАПУСК</div>
         <div :class="{ [FarmStyle['name']]: true }" v-else>
           {{ currentStatusFarming ? 'Farming' : 'Take income' }}
           <Icon :name="currentStatusFarming ? 'tonomo-gray-coin-text-dark' : 'tonomo-white-coin'" :class="{ [FarmStyle['styled-icon']]: true }" />
@@ -127,7 +127,7 @@ onUnmounted(() => {
         </div>
         <div :class="{ [FarmStyle['time']]: true }" v-if="currentStatusFarming && user.current_farm.unique !== null">{{ secondsToHMS(timerSeconds) }}</div>
       </template>
-      <div :class="{ [FarmStyle['name']]: true }" v-else>Loading...</div>
+      <div :class="{ [FarmStyle['name']]: true }" v-else>Обновление...</div>
     </button>
   </Animation>
 </template>
