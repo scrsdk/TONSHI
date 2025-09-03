@@ -69,27 +69,6 @@ const socketClient = io(import.meta.env.VITE_SOCKET, {
 	},
 })
 
-socketClient.on('connect_error', async () => {
-	await store.dispatch('error/setError', {
-		status: true,
-		title: 'Error',
-		description: 'There was an error on our server side',
-		button: { type: 'success', name: 'Refresh app', function: 'reloadApp' },
-	})
-})
-socketClient.on('daily_raffle_winner', async data => {
-	await store.dispatch('setDailyRaffleLastWinner', data)
-})
-socketClient.on('game_error', async data => {
-	if (!data.status) {
-		data.status = true
-	}
-	await store.dispatch('error/setError', data)
-	socketEnabled.value = false
-	if (data.is_multi && !socketMultiDevices.value) {
-		socketMultiDevices.value = true
-	}
-})
 socketClient.on('notification', async data => {
 	await store.dispatch('notifications/addItemNotificationsPopup', data)
 })
