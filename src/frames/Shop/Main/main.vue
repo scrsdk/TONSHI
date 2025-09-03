@@ -97,7 +97,7 @@ onUnmounted(() => store.dispatch('setDonationsIdPending', null))
         <Animation name="shop-balance" :animation-style="AnimationsMain" :start-animation="true">
           <div :class="{ [MainStyle['shop-balance']]: true }">
             <div :class="{ [MainStyle['balance-body']]: true }">
-              <span :class="{ [MainStyle['title']]: true }">Balance:</span>
+              <span :class="{ [MainStyle['title']]: true }">Баланс:</span>
               <div :class="{ [MainStyle['block']]: true }">
                 <Icon :class="{ [MainStyle['styled-icon']]: true }" name="tonomo-gray-coin-text-white" />
                 <span :class="{ [MainStyle['value']]: true }">{{ integerSpaces(user.balance.vTono) }}</span>
