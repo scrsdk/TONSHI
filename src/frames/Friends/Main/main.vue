@@ -50,20 +50,20 @@ const webAppShare = useWebAppShare()
 
 const inviteFriends = () => webAppNavigation.openTelegramLink(shareUrlInviteFriends(user.value.friend_code));
 const copyUrl = () => {
-  showPopup("info", "Invite link copied to clipboard");
+  showPopup("info", "Ссылка скопирована");
   return navigator.clipboard.writeText(shareUrlInviteFriends(user.value.friend_code, false));
 }
 
 const telegramStory = () => {
   const inviteLink = import.meta.env.VITE_TELEGRAM_BOT + "/" + import.meta.env.VITE_TELEGRAM_WEBAPP_URI + "?startapp=" + user.value.friend_code,
-      postText = (!user.value.is_premium ? "Earn $Tonomo together 👉" + inviteLink + "👈. " : "") + "Join us in an exciting adventure as we team up with Binance, Bybit, OKX, Bitget and ready for a powerful airdrop!"
+      postText = (!user.value.is_premium ? "Зарабатывайте $Tonomo вместе 👉" + inviteLink + "👈. " : "") + "Присоединяйтесь к нам в захватывающем приключении, когда мы объединяемся с Binance, Bybit, OKX, Bitget и будем готовы к мощному AirDrop!"
   return webAppShare.shareToStory(
       import.meta.env.VITE_CDN_MAIN + "/telegram-story.jpg?v=1",
       {
         text: postText,
         ...(user.value.is_premium && {widget_link: {
           url: import.meta.env.VITE_TELEGRAM_BOT + "/" + import.meta.env.VITE_TELEGRAM_WEBAPP_URI + "?startapp=" + user.value.friend_code,
-          name: "Earn $Tonomo"
+          name: "Заработать $Tonomo"
         }})
       }
   );
@@ -71,7 +71,7 @@ const telegramStory = () => {
 
 onErrorLoadFriends(() => {
   router.push('/')
-  return showPopup('error', "An error occurred while loading friends")
+  return showPopup('error', "При загрузке друзей произошла ошибка")
 })
 
 onMounted(() => load())
@@ -86,17 +86,17 @@ onMounted(() => load())
               :class="{ [GenericStyle['icon']]: true }"
               :style="{ backgroundImage: 'url(' + FriendsIcon + ')' }"
           />
-          <span :class="{ [GenericStyle['text']]: true }">Friends</span>
+          <span :class="{ [GenericStyle['text']]: true }">Друзья</span>
         </div>
       </Animation>
       <Animation name="page-header-description" :animation-style="GenericAnimations" :start-animation="true">
-        <div :class="{ [GenericStyle['description']]: true }">Invite friends, earn bonuses</div>
+        <div :class="{ [GenericStyle['description']]: true }">Зарабатывай бонусы с помощью друзей</div>
       </Animation>
     </div>
     <Animation name="friends-banner" :animation-style="AnimationsMain" :start-animation="true">
       <div :class="{ [MainStyle['banner']]: true }">
-        <div :class="{ [MainStyle['title']]: true }">Invite friends and earn $Tonomo</div>
-        <div :class="{ [MainStyle['description']]: true }">Get 3 $Tonomo for register a friend without premium or 15 $Tonomo if has premium.</div>
+        <div :class="{ [MainStyle['title']]: true }">Приглашайте друзей и зарабатывайте $Tonomo</div>
+        <div :class="{ [MainStyle['description']]: true }">Получите 3 $Tonomo за регистрацию друга без премиума или 15 $Tonomo, если есть премиум.</div>
       </div>
     </Animation>
     <div :class="{ [MainStyle['features']]: true }">
@@ -107,8 +107,8 @@ onMounted(() => load())
               :style="{ backgroundImage: 'url(' + MessagingIcon + ')' }"
           ></div>
           <div :class="{ [MainStyle['info']]: true }">
-            <div :class="{ [MainStyle['name']]: true }">Share your invite link</div>
-            <div :class="{ [MainStyle['description']]: true }">Invite friends and receive bonuses to $Tonomo</div>
+            <div :class="{ [MainStyle['name']]: true }">Поделитесь ссылкой</div>
+            <div :class="{ [MainStyle['description']]: true }">Приглашайте друзей и получайте бонусы на $Tonomo</div>
           </div>
         </div>
       </Animation>
@@ -119,8 +119,8 @@ onMounted(() => load())
               :style="{ backgroundImage: 'url(' + WalletIcon + ')' }"
           ></div>
           <div :class="{ [MainStyle['info']]: true }">
-            <div :class="{ [MainStyle['name']]: true }">Airdrop bonus</div>
-            <div :class="{ [MainStyle['description']]: true }">Get 5% with airdrop of your friends who receive it</div>
+            <div :class="{ [MainStyle['name']]: true }">AirDrop бонус</div>
+            <div :class="{ [MainStyle['description']]: true }">Получите 5% с AirDrop ваших друзей, которые его получат</div>
           </div>
         </div>
       </Animation>
@@ -132,8 +132,8 @@ onMounted(() => load())
                 :style="{ backgroundImage: 'url(' + BagMoneyIcon + ')' }"
             ></div>
             <div :class="{ [MainStyle['info']]: true }">
-              <div :class="{ [MainStyle['name']]: true }">Friends upgrade league</div>
-              <div :class="{ [MainStyle['description']]: true }">Get bonus for upgrading friends league</div>
+              <div :class="{ [MainStyle['name']]: true }">За лигу друзей</div>
+              <div :class="{ [MainStyle['description']]: true }">Получите бонус за повышение друга в лиге</div>
             </div>
           </div>
           <button
@@ -151,7 +151,7 @@ onMounted(() => load())
         <div :class="{ [MainStyle['top-buttons']]: true }">
           <button type="button" :class="{ [MainStyle['button']]: true, [MainStyle['invite-share']]: true }" @click="inviteFriends">
             <Icon :class="{ [MainStyle['styled-icon']]: true }" name="friends-share-user" />
-            <span :class="{ [MainStyle['name']]: true }">Invite friends</span>
+            <span :class="{ [MainStyle['name']]: true }">Пригласить друзей</span>
           </button>
           <button type="button" :class="{ [MainStyle['button']]: true, [MainStyle['invite-copy']]: true }" @click="copyUrl">
             <Icon :class="{ [MainStyle['styled-icon']]: true }" name="copy" />
@@ -159,7 +159,7 @@ onMounted(() => load())
         </div>
         <button type="button" :class="{ [MainStyle['button']]: true, [MainStyle['invite-story']]: true }" @click="telegramStory">
           <Icon :class="{ [MainStyle['styled-icon']]: true }" name="share-cube" />
-          <span :class="{ [MainStyle['name']]: true }">Post to Telegram story</span>
+          <span :class="{ [MainStyle['name']]: true }">Пост в истории Telegram</span>
         </button>
       </div>
     </Animation>
