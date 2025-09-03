@@ -87,9 +87,9 @@ const loadAppImages = async state => {
 const requestFailed = () => {
 	return store.dispatch('error/setError', {
 		status: true,
-		title: 'Error',
-		description: 'There was an error on our server side',
-		button: { type: 'success', name: 'Refresh app', function: 'reloadApp' },
+		title: 'Увы',
+		description: 'На стороне нашего сервера произошла ошибка',
+		button: { type: 'success', name: 'Обновить', function: 'reloadApp' },
 	})
 }
 
