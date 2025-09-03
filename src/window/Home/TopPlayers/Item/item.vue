@@ -35,6 +35,6 @@ const user = computed(() => store.state.user)
         </div>
       </div>
     </div>
-    <div v-if="props.userId === user.id" :class="{ [ItemStyle['you-text']]: true }">You</div>
+    <div v-if="props.userId === user.id" :class="{ [ItemStyle['you-text']]: true }">Вы</div>
   </div>
 </template>
