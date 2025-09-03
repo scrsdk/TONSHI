@@ -10,7 +10,7 @@ const props = defineProps({
 })
 
 const descriptionLoadingText = computed(() => {
-  if (props.state === 1) return "Initialize app"
+  if (props.state === 1) return "Инициализизация"
   if (props.state === 2) {
     const appImagesCount = appImages.length,
         loadedAppImagesCount = appImages.filter(image => image.loaded).length;
