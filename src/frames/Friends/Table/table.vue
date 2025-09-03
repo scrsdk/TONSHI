@@ -131,7 +131,7 @@ onErrorGetFriendsUsers(() => {
   if (paginateLoading.value) {
     paginateLoading.value = false
   }
-  return showPopup("error", "There was an error loading your users from friends");
+  return showPopup("error", "Произошла ошибка при загрузке ваших пользователей из друзей");
 })
 
 onMounted(() => load(true))
@@ -144,7 +144,7 @@ onMounted(() => load(true))
         <Icon :class="{ [TableStyle['styled-icon']]: true }" name="bottom-menu-friends" />
       </Animation>
       <Animation name="invited-list-not-found-description" :animation-style="AnimationsTable" :start-animation="true">
-        <span :class="{ [TableStyle['text']]: true }">An error occurred while loading information.</span>
+        <span :class="{ [TableStyle['text']]: true }">При загрузке информации произошла ошибка.</span>
       </Animation>
     </div>
     <template v-else>
@@ -157,11 +157,11 @@ onMounted(() => load(true))
         <Animation name="invited-list-header" :animation-style="AnimationsTable" :start-animation="true">
           <div :class="{ [TableStyle['header']]: true }">
             <div :class="{ [TableStyle['friends-count']]: true }">
-              <span :class="{ [TableStyle['count']]: true }">{{ count }}</span> friends
+              <span :class="{ [TableStyle['count']]: true }">{{ count }}</span> Пригласил 
             </div>
             <button :class="{ [TableStyle['button-inviters']]: true }" @click="toggleWindow('friends-top-inviters')">
               <div :class="{ [TableStyle['image']]: true }"></div>
-              <span :class="{ [TableStyle['name']]: true }">Top 300 inviters</span>
+              <span :class="{ [TableStyle['name']]: true }">Топ 300 друзей</span>
             </button>
           </div>
         </Animation>
@@ -175,7 +175,7 @@ onMounted(() => load(true))
                 <Icon :class="{ [TableStyle['styled-icon']]: true }" name="bottom-menu-friends" />
               </Animation>
               <Animation name="invited-list-not-found-description" :animation-style="AnimationsTable" :start-animation="true">
-                <span :class="{ [TableStyle['text']]: true }">Friends list is empty.</span>
+                <span :class="{ [TableStyle['text']]: true }">Список друзей пуст</span>
               </Animation>
             </div>
           </Animation>
