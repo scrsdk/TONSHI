@@ -143,7 +143,7 @@ onMounted(() => load())
 						:class="{ [GenericStyle['icon']]: true }"
 						:style="{ backgroundImage: 'url(' + TasksIcon + ')' }"
 					></div>
-					<span :class="{ [GenericStyle['text']]: true }">Tasks</span>
+					<span :class="{ [GenericStyle['text']]: true }">Задания</span>
 				</div>
 			</Animation>
 			<Animation
@@ -152,7 +152,7 @@ onMounted(() => load())
 				:start-animation="true"
 			>
 				<div :class="{ [GenericStyle['description']]: true }">
-					Tasks for which you can get $Tonomo
+					Задания, за которые вы можете получить $Tonomo
 				</div>
 			</Animation>
 		</div>
@@ -165,7 +165,7 @@ onMounted(() => load())
 			<CircleLoader :border-size="6" :width="40" :height="40" v-if="loading" />
 			<template v-else>
 				<Wallet />
-				<Ads />
+				
 				<DailyRaffle />
 				<CheckIn />
 				<Nickname />
