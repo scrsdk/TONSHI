@@ -12,7 +12,7 @@ const store = useStore()
 const dailyRewards = computed(() => store.state.user.available_daily_rewards)
 
 const claim = async () => await toggleDonationHelper(
-    "Would you like to receive up to x2 from the bonus?",
+    "Хотели бы вы получить до x2 из бонуса?",
     {name: "claim-daily-bonus"},
     [
       {type: 'free', text: 'x1'},
@@ -31,7 +31,7 @@ const claim = async () => await toggleDonationHelper(
           <div :class="{ [DailyStyle['loading-daily-icon']]: true }"></div>
         </Animation>
         <Animation name="loading-daily-title" :animation-style="AnimationsDaily" :start-animation="true">
-          <div :class="{ [DailyStyle['loading-daily-title']]: true }">Your daily rewards</div>
+          <div :class="{ [DailyStyle['loading-daily-title']]: true }">Ежедневные награды</div>
         </Animation>
       </div>
       <div :class="{ [DailyStyle['loading-daily-rewards']]: true }">
@@ -53,15 +53,15 @@ const claim = async () => await toggleDonationHelper(
         </div>
         <Animation name="loading-daily-text" :animation-style="AnimationsDaily" :start-animation="true">
           <div :class="{ [DailyStyle['loading-daily-text']]: true }">
-            <span>Come back tomorrow to get x2 $Tonomo</span>
-            <span>Tip: Skipping a day resets your progress.</span>
+            <span>Вернись завтра, чтобы получить x2 $Tonomo</span>
+            <span>Совет: Пропуск дня сбрасывает ваш прогресс.</span>
           </div>
         </Animation>
       </div>
     </div>
     <Animation name="loading-bottom" :animation-style="AnimationsDaily" :start-animation="true">
       <div :class="{ [DailyStyle['loading-bottom']]: true }">
-        <button type="button" :class="{ [DailyStyle['loading-button']]: true }" @click="claim">Continue</button>
+        <button type="button" :class="{ [DailyStyle['loading-button']]: true }" @click="claim">Продолжить</button>
       </div>
     </Animation>
   </div>
