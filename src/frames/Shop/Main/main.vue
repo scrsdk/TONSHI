@@ -64,10 +64,10 @@ const loadItems = async () => {
 
 onErrorGetDonations(() => {
   router.push('/')
-  return showPopup('error', "An error occurred while loading donations")
+  return showPopup('error', "Произошла ошибка при загрузке доната")
 })
 
-onErrorGetMyBalance(() => showPopup('error', "There was an error loading your current balance"))
+onErrorGetMyBalance(() => showPopup('error', "Произошла ошибка при загрузке вашего текущего баланса"))
 
 onMounted(() => loadItems())
 onUnmounted(() => store.dispatch('setDonationsIdPending', null))
@@ -82,11 +82,11 @@ onUnmounted(() => store.dispatch('setDonationsIdPending', null))
               :class="{ [GenericStyle['icon']]: true }"
               :style="{ backgroundImage: 'url(' + CartIcon + ')' }"
           ></div>
-          <span :class="{ [GenericStyle['text']]: true }">Shop</span>
+          <span :class="{ [GenericStyle['text']]: true }">Магазин</span>
         </div>
       </Animation>
       <Animation name="page-header-description" :animation-style="GenericAnimations" :start-animation="true">
-        <div :class="{ [GenericStyle['description']]: true }">Buy $vTono for fast $Tonomo farming</div>
+        <div :class="{ [GenericStyle['description']]: true }">Купи $vTono для быстрого фарма $Tonomo</div>
       </Animation>
     </div>
     <div :class="{ [MainStyle['shop-content']]: true }">
