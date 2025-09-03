@@ -32,7 +32,7 @@ const disconnectWallet = () => {
       </div>
       <button type="button" :class="{ [WalletStyle['button-wallet']]: true, [WalletStyle['wallet-connected']]: wallet !== null }" @click="connectButton">
         <Icon :class="{ [WalletStyle['styled-icon']]: true}" name="wallet" />
-        <span :class="{ [WalletStyle['name']]: true}">{{ !address ? 'Connect wallet' : (address.substring(0, 18) + '...') }}</span>
+        <span :class="{ [WalletStyle['name']]: true}">{{ !address ? 'Подключить кошелёк' : (address.substring(0, 18) + '...') }}</span>
       </button>
       <button
           v-if="wallet"
