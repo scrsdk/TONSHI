@@ -256,7 +256,7 @@ onUnmounted(async () => {
         <CircleLoader :border-size="5" :width="36" :height="36" />
       </div>
       <div :class="{ [DonationStyle['timer-content']]: true }" v-if="seconds > 0">
-        <span :class="{ [DonationStyle['name']]: true }">Next:</span>
+        <span :class="{ [DonationStyle['name']]: true }">Следующий:</span>
         <span :class="{ [DonationStyle['time']]: true }">{{ nextTimeLimitDay }}</span>
       </div>
       <div :class="{ [DonationStyle['body']]: true }">
@@ -266,10 +266,10 @@ onUnmounted(async () => {
         <div :class="{ [DonationStyle['info']]: true }">
           <div :class="{ [DonationStyle['name']]: true }"><span :class="{ [DonationStyle['value']]: true }">{{ props.amount }}</span> $vTono</div>
           <div :class="{ [DonationStyle['price']]: true }">
-            <span v-if="!props.isCheckIn">{{ props.price === 0 ? 'Free' : '$ ' + props.price }}</span>
+            <span v-if="!props.isCheckIn">{{ props.price === 0 ? 'Бесплатно' : '$ ' + props.price }}</span>
             <div v-else-if="props.isCheckIn" :class="{ [DonationStyle['check-in']]: true }">
               <Icon :class="{ [DonationStyle['styled-icon']]: true }" name="crypto-ton" />
-              <span>Claim</span>
+              <span>Забрать</span>
             </div>
           </div>
         </div>
