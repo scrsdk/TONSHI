@@ -138,7 +138,7 @@ const goPrevLeague = async () => {
 
 onErrorGetTopPlayers(async () => {
   await toggleWindow();
-  return showPopup('error', "An error occurred while loading top players")
+  return showPopup('error', "Произошла ошибка при загрузке топа игроков")
 })
 
 onMounted(() => load())
@@ -208,7 +208,7 @@ onMounted(() => load())
                   <Icon :class="{ [MainStyle['styled-icon']]: true }" name="smile-sad" />
                 </Animation>
                 <Animation name="top-players-empty-list-description" :animation-style="AnimationsMain" :start-animation="true">
-                  <span :class="{ [MainStyle['text']]: true }">The list of players in {{ leagueInfo.name }} is empty</span>
+                  <span :class="{ [MainStyle['text']]: true }">Список игроков в {{ leagueInfo.name }} пуст</span>
                 </Animation>
               </div>
             </template>
