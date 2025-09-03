@@ -15,7 +15,7 @@ const router = useRouter()
       <div :class="{ [BottomMenuStyle['menu-items']]: true }">
         <Item
             icon="home"
-            title="Дом"
+            title="Главная"
             :tap="() => router.push('/')"
             :active="route.path === '/'"
         />
