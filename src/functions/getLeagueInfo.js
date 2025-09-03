@@ -16,27 +16,27 @@ export default (type) => {
         case "silver":
             return {
                 icon: LeaguesSilverIcon,
-                name: "Silver League",
+                name: "Серебрянная лига",
             }
         case "copper":
             return {
                 icon: LeaguesCopperIcon,
-                name: "Copper League",
+                name: "Медная лига",
             }
         case "platinum":
             return {
                 icon: LeaguesPlatinumIcon,
-                name: "Platinum League",
+                name: "Платиновая лига",
             }
         case "gold":
             return {
                 icon: LeaguesGoldIcon,
-                name: "Gold League",
+                name: "Золотая лига",
             }
         case "master":
             return {
                 icon: LeaguesMasterIcon,
-                name: "Master League",
+                name: "Грандмастер",
             }
         default:
             return default_league;
