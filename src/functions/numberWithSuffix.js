@@ -1,13 +1,13 @@
 export default (num) => {
     let suffix = '';
     if (num % 10 === 1 && num % 100 !== 11) {
-        suffix = 'st';
+        suffix = '';
     } else if (num % 10 === 2 && num % 100 !== 12) {
-        suffix = 'nd';
+        suffix = '';
     } else if (num % 10 === 3 && num % 100 !== 13) {
-        suffix = 'rd';
+        suffix = '';
     } else {
-        suffix = 'th';
+        suffix = '';
     }
     return num + suffix;
 }
