@@ -61,11 +61,11 @@ onUnmounted(() => {
 		<div :class="{ [MainStyle['daily-raffle']]: true }">
 			<div :class="{ [MainStyle['daily-raffle-title']]: true }">
 				<div :class="{ [MainStyle['daily-raffle-title-text']]: true }">
-					Daily raffle
+					Ежедневная лотерея
 				</div>
 			</div>
 			<div :class="{ [MainStyle['daily-raffle-description']]: true }">
-				Participate in the daily raffle and you have a chance to win up to
+				Участвуйте в ежедневной лотерее, и у вас будет шанс выиграть до
 				<b>{{ dailyRaffle.max_win }} TON</b>.
 			</div>
 			<Animation
@@ -97,8 +97,8 @@ onUnmounted(() => {
 					>
 						{{
 							dailyRaffle.is_participating
-								? 'You are participating'
-								: 'You are not participating'
+								? 'Вы участвуете'
+								: 'Вы не участвуете'
 						}}
 					</div>
 				</div>
@@ -114,8 +114,8 @@ onUnmounted(() => {
 						[MainStyle['daily-raffle-badge-info']]: true,
 					}"
 				>
-					Participation will be automatic if you view
-					{{ dailyRaffle.need_for_daily_raffle }} ads.
+					Участие будет автоматическим, если вы просмотрите
+					{{ dailyRaffle.need_for_daily_raffle }} реклам.
 				</div>
 			</Animation>
 			<Animation
@@ -129,7 +129,7 @@ onUnmounted(() => {
 						[MainStyle['daily-raffle-badge-danger']]: true,
 					}"
 				>
-					Don't forget to link your wallet to claim your winnings.
+					Не забудьте привязать свой кошелек, чтобы получить свой выигрыш.
 				</div>
 			</Animation>
 			<Animation
@@ -140,7 +140,7 @@ onUnmounted(() => {
 				<div :class="{ [MainStyle['daily-raffle-block']]: true }">
 					<div :class="{ [MainStyle['daily-raffle-last-winner']]: true }">
 						<div :class="{ [MainStyle['daily-raffle-info-title']]: true }">
-							Last
+							Последний
 						</div>
 						<div :class="{ [MainStyle['daily-raffle-info-avatar']]: true }">
 							<img :src="last_winner.avatar" alt="Avatar" />
