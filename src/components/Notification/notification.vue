@@ -23,10 +23,10 @@ const props = defineProps({
 })
 
 const titles = {
-  error: "Error",
-  success: "Success",
-  warning: "Warning",
-  info: "Info"
+  error: "Ошибка",
+  success: "Успешно",
+  warning: "Предупреждение",
+  info: "Информация"
 }
 
 const store = useStore()
