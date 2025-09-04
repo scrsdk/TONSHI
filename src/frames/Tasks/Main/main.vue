@@ -165,7 +165,7 @@ onMounted(() => load())
 			<CircleLoader :border-size="6" :width="40" :height="40" v-if="loading" />
 			<template v-else>
 				<Wallet />
-				
+				<Kub />
 				<DailyRaffle />
 				<CheckIn />
 				<Nickname />
