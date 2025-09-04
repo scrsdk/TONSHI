@@ -44,7 +44,7 @@ const submit = async () => {
 	endTimer.value = data.seconds - 1
 	disabled.value = true
 	loading.value = false
-	return showPopup('success', 'You got +' + nickname.value.reward + ' $Tonomo!')
+	return showPopup('success', 'Вы получили +' + nickname.value.reward + ' $Tonomo!')
 }
 
 const startTimer = () => {
@@ -108,14 +108,14 @@ onUnmounted(() => {
 	>
 		<div :class="{ [MainStyle['tasks-nickname']]: true }">
 			<div :class="{ [MainStyle['tasks-title']]: true }">
-				Add $Tonomo to your nickname
+				Добавь $Tonomo в свое имя
 			</div>
 			<div :class="{ [MainStyle['tasks-description']]: true }">
-				Get +{{ nickname.reward }} $Tonomo every day by adding
+				Получи +{{ nickname.reward }} $Tonomo каждый день просто добавив 
 				<span :class="{ [MainStyle['tasks-description-badge']]: true }">
 					$Tonomo
 				</span>
-				to your nickname!
+				в свое имя Telegram!
 			</div>
 
 			<div
@@ -123,7 +123,7 @@ onUnmounted(() => {
 				v-if="!isTonomoInNickname"
 			>
 				<span :class="{ [MainStyle['text']]: true }">
-					You don't add <b>$Tonomo</b> to your nickname yet
+					Добавь <b>$Tonomo</b> в своё имя Telegram
 				</span>
 			</div>
 
@@ -139,7 +139,7 @@ onUnmounted(() => {
 				>
 					<div :class="{ [MainStyle['name']]: true }">
 						<Icon :class="{ [MainStyle['styled-icon']]: true }" name="gift" />
-						<span :class="{ [MainStyle['text']]: true }">Get reward</span>
+						<span :class="{ [MainStyle['text']]: true }">Получить</span>
 					</div>
 					<span :class="{ [MainStyle['time']]: true }" v-if="disabled">
 						{{ stringTime }}
