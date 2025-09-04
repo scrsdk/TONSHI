@@ -133,7 +133,7 @@ onUnmounted(() => {
         </div>
         <div :class="{ [ItemStyle['info']]: true }">
           <span :class="{ [ItemStyle['title']]: true }">{{ props.title }}</span>
-          <span :class="{ [ItemStyle['description']]: true }">Get {{ props.reward }} $Tonomo</span>
+          <span :class="{ [ItemStyle['description']]: true }">Получить {{ props.reward }} $Tonomo</span>
         </div>
       </div>
       <button
@@ -149,11 +149,11 @@ onUnmounted(() => {
       >
          <template v-if="props.period === 'day'">
            <CircleLoader v-if="tasksId === store.state.tasks_id_pending" :width="18" :height="18" :border-size="3" line-color="rgba(255, 255, 255, .75)" full-color="rgba(88, 93, 110, .3)" />
-           <span :class="{ [ItemStyle['name']]: true }" v-else>{{ !props.claim ? "Claim" : nextTimeCheckIn }}</span>
+           <span :class="{ [ItemStyle['name']]: true }" v-else>{{ !props.claim ? "Забрать" : nextTimeCheckIn }}</span>
          </template>
         <template v-else>
           <CircleLoader v-if="tasksId === store.state.tasks_id_pending" :width="18" :height="18" :border-size="3" line-color="rgba(255, 255, 255, .75)" full-color="rgba(88, 93, 110, .3)" />
-          <span v-else-if="!props.claim" :class="{ [ItemStyle['name']]: true }">Check in</span>
+          <span v-else-if="!props.claim" :class="{ [ItemStyle['name']]: true }">Регистрация</span>
           <Icon :class="{ [ItemStyle['styled-icon']]: true }" name="circle-check" v-else />
         </template>
       </button>
