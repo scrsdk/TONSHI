@@ -68,8 +68,8 @@ const closeConnection = () => {
             <img :class="{ [ConnectStyle['image']]: true }" :src="walletInfo.icon" />
             <span :class="{ [ConnectStyle['text']]: true }">{{ walletInfo.name }}</span>
           </div>
-          <div :class="{ [ConnectStyle['description']]: true }">Please use the {{ walletInfo.name }} wallet to complete this task.</div>
-          <button type="button" :class="{ [ConnectStyle['button-connect']]: true }" @click="walletConnect">Connect {{ walletInfo.name }} wallet</button>
+          <div :class="{ [ConnectStyle['description']]: true }">Пожалуйста, используйте кошелек {{ walletInfo.name }} для выполнения этой задачи.</div>
+          <button type="button" :class="{ [ConnectStyle['button-connect']]: true }" @click="walletConnect">Подключение {{ walletInfo.name }} кошелька</button>
         </div>
       </Animation>
     </div>
