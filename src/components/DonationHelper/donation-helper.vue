@@ -137,7 +137,7 @@ const claimFarming = async (body) => {
   await store.dispatch('user/setUserLeague', data.league);
   await store.dispatch('user/clearUserCurrentFarm');
   await toggleDonationHelper();
-  return showPopup("success", "You got +" + data.total_amount + " $Tonomo!");
+  return showPopup("success", "Вы получили +" + data.total_amount + " $Tonomo!");
 }
 
 const claimDailyBonus =  async (body) => {
@@ -242,7 +242,7 @@ onErrorClaimDailyRewards((error) => {
         <div :class="{ [MainStyle['donation-body']]: true }">
           <div :class="{ [MainStyle['vtono-balance']]: true }">
             <div :class="{ [MainStyle['balance-body']]: true }">
-              <span :class="{ [MainStyle['title']]: true }">Balance:</span>
+              <span :class="{ [MainStyle['title']]: true }">Баланс:</span>
               <div :class="{ [MainStyle['block']]: true }">
                 <Icon :class="{ [MainStyle['styled-icon']]: true }" name="tonomo-gray-coin-text-white" />
                 <span :class="{ [MainStyle['value']]: true }">{{ integerSpaces(user.balance.vTono) }}</span>
@@ -277,10 +277,10 @@ onErrorClaimDailyRewards((error) => {
                 </template>
               </button>
               <div :class="{ [MainStyle['info']]: true }">
-                <span :class="{ [MainStyle['name']]: true }" v-if="button.type === 'free'">Free</span>
+                <span :class="{ [MainStyle['name']]: true }" v-if="button.type === 'free'">Бесплатно</span>
                 <template v-else-if="button.type === 'checkin'">
                   <Icon :class="{ [MainStyle['styled-icon']]: true }" name="crypto-ton" />
-                  <span :class="{ [MainStyle['name']]: true }">Claim</span>
+                  <span :class="{ [MainStyle['name']]: true }">Возьми</span>
                 </template>
                 <template v-else-if="button.type === 'donate'">
                   <Icon :class="{ [MainStyle['styled-icon']]: true }" name="tonomo-gray-coin-text-white" />
