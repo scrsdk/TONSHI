@@ -18,6 +18,7 @@ import Ads from '../Ads/ads.vue'
 import { useStore } from 'vuex'
 import DailyRaffle from '../DailyRaffle/daily-raffle.vue'
 import Nickname from '../Nickname/nickname.vue'
+import Kub from '../Kub/kub.vue'
 
 const store = useStore()
 const router = useRouter()
