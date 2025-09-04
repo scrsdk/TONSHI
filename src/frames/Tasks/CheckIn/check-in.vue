@@ -88,7 +88,7 @@ const completeCheckIn = async (unique, item_id) => {
     await store.dispatch('setTasksIdPending', null);
     await store.dispatch("user/setUserBalance_Tonomo", balance.tonomo);
     await store.dispatch("user/setUserBalance_vTono", balance.vTono);
-    return showPopup("success", "You got +" + item.reward + " $Tonomo!")
+    return showPopup("success", "Вы получили +" + item.reward + " $Tonomo!")
   }
   const check_interval = async () => {
     const req = await mutateCheckTransaction({
@@ -136,8 +136,8 @@ onUnmounted(() => {
 <template>
   <Animation name="check-in" :animation-style="AnimationsCheckIn" :start-animation="true">
     <div :class="{ [MainStyle['tasks-check-in']]: true }">
-      <div :class="{ [MainStyle['tasks-title']]: true }">Web3 Check-in</div>
-      <div :class="{ [MainStyle['tasks-description']]: true }">Make 1 transaction on a cryptocurrency exchange via our app and get $Tonomo bonus</div>
+      <div :class="{ [MainStyle['tasks-title']]: true }">Регистрация в Web3</div>
+      <div :class="{ [MainStyle['tasks-description']]: true }">Совершите 1 транзакцию на криптовалютной бирже через наше приложение и получите бонус $Tonomo</div>
       <div :class="{ [MainStyle['list-of-check-in']]: true }">
         <Item
             v-for="(item, key) of checkIn"
