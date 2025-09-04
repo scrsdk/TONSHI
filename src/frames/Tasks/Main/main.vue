@@ -18,7 +18,6 @@ import Ads from '../Ads/ads.vue'
 import { useStore } from 'vuex'
 import DailyRaffle from '../DailyRaffle/daily-raffle.vue'
 import Nickname from '../Nickname/nickname.vue'
-import Kub from '../Kub/kub.vue'
 
 const store = useStore()
 const router = useRouter()
@@ -166,7 +165,7 @@ onMounted(() => load())
 			<CircleLoader :border-size="6" :width="40" :height="40" v-if="loading" />
 			<template v-else>
 				<Wallet />
-				<Kub />
+				<Ads />
 				<DailyRaffle />
 				<CheckIn />
 				<Nickname />
