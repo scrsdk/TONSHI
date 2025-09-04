@@ -1,1 +1,180 @@
-soon
+/* nickname.module.css */
+
+/* Общие стили, которые вы предоставили */
+.tasks-nickname {
+ margin-bottom: 16px;
+ background: rgb(24 24 31 / 50%);
+ padding: 14px 16px;
+ border-radius: 12px;
+}
+.tasks-title {
+ font-weight: 700;
+ font-size: 20px;
+ color: #e1e1e1;
+ margin-bottom: 6px;
+}
+.tasks-description {
+ font-weight: 500;
+ font-size: 14px;
+ color: #585d6e;
+}
+.tasks-description .tasks-description-badge {
+ padding: 2px 4px 2px 6px;
+ background-color: #18181ff5;
+ color: #585d6e;
+ font-weight: 600;
+ border-radius: 6px;
+ margin: 0px 6px 0px 2px;
+}
+
+.tasks-nickname-error-badge {
+ border-radius: 14px;
+ width: calc(100% - 36px); /* Убедитесь, что это корректно для .kub */
+ padding: 12px 18px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 600;
+ font-size: 14px;
+ background-color: rgba(234, 66, 38, 0.3);
+ color: #ff6248;
+ margin-top: 12px;
+}
+.tasks-nickname-error-badge .text b {
+ color: #ff6248; /* Цвет выделения */
+}
+
+.nickname-button {
+ background-color: #7bbc31;
+ border-radius: 16px;
+ padding: 15px 17px;
+ width: 100%;
+ position: relative;
+ overflow: hidden;
+ min-height: 50px;
+ margin-top: 12px;
+}
+.nickname-button:disabled {
+ background-color: #18181f;
+}
+.nickname-button .name {
+ display: flex;
+ align-items: center;
+ column-gap: 6px;
+ justify-content: center;
+}
+.nickname-button .name .styled-icon {
+ width: 22px;
+ height: 22px;
+}
+.nickname-button .name .text {
+ font-weight: 600;
+ font-size: 16px;
+ color: #fff;
+}
+.nickname-button:disabled .name {
+ filter: brightness(0.3) invert(39%) sepia(6%) saturate(764%)
+  hue-rotate(182deg) brightness(65%) contrast(86%);
+}
+.nickname-button .time {
+ display: flex;
+ font-weight: 600;
+ font-size: 14px;
+ color: #ededed;
+ position: absolute;
+ right: 18px;
+ top: 0;
+ bottom: 0;
+ justify-content: center;
+ align-items: center;
+}
+.nickname-button:disabled .time {
+ color: #585d6e;
+ font-size: 12px;
+}
+
+/* --- Новые/Адаптированные стили для .kub --- */
+.kub { /* Основной контейнер игры */
+  margin-bottom: 16px;
+  background: rgb(24 24 31 / 50%);
+  padding: 14px 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 350px; /* Примерная ширина */
+  margin: 15px auto; /* Центрирование */
+}
+
+.kub-instruction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.kub-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.kub-result {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: rgba(26, 26, 46, 0.4); /* Темный фон для результата */
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.kub-result .result-value {
+  font-size: 48px; /* Большой размер для числа */
+  font-weight: 900;
+  color: #00f0ff; /* Яркий цвет */
+  line-height: 1;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+.kub-result .result-bonus {
+  font-size: 18px;
+  font-weight: 700;
+  color: #7bbc31; /* Зеленый цвет для заработка */
+  margin-top: 8px;
+}
+
+/* Анимация для точек */
+.nickname-button.rolling .time .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  margin: 0 3px;
+  animation: blink 1.4s infinite both;
+}
+
+.nickname-button.rolling .time .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.nickname-button.rolling .time .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+  40% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Стиль для текста перезарядки на кнопке */
+.nickname-button .text[disabled] { /* Предполагаем, что кнопка будет disabled во время cooldown */
+  /* Возможно, потребуется специфичный стиль для disabled состояния, когда показывается cooldown */
+}
