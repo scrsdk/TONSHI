@@ -8,7 +8,7 @@ import LeaguesSilverIcon from "~/assets/images/leagues/silver.png";
 export default (type) => {
     const default_league = {
         icon: LeaguesBronzeIcon,
-        name: "Bronze League",
+        name: "Бронзовая лига",
     };
     switch (type) {
         case "bronze":
