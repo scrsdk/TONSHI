@@ -1,3 +1,4 @@
+<script setup>
 import AnimationsAds from './animations.module.css'
 import MainStyle from './ads.module.css'
 import Animation from '../../../components/animation.vue'
@@ -94,7 +95,6 @@ onUnmounted(() => {
   }
 })
 </script>
-
 
 <template>
 	<Animation
