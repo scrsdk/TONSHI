@@ -110,7 +110,7 @@ onUnmounted(() => {
 						:start-animation="true"
 					>
 						<div :class="{ [MainStyle['daily-raffle-header-title']]: true }">
-							<div :class="{ [MainStyle['text']]: true }">Daily Raffle</div>
+							<div :class="{ [MainStyle['text']]: true }">Ежедневная лотерея</div>
 							<div :class="{ [MainStyle['badge']]: true }">
 								<Icon
 									:class="{ [MainStyle['styled-icon']]: true }"
@@ -130,7 +130,7 @@ onUnmounted(() => {
 						<div
 							:class="{ [MainStyle['daily-raffle-header-description']]: true }"
 						>
-							Watch ads and take part in the raffle
+							Смотрите рекламу и примите участие в лотерее
 						</div>
 					</Animation>
 				</div>
@@ -156,7 +156,7 @@ onUnmounted(() => {
 						}"
 					>
 						<div :class="{ [MainStyle['icon-text']]: true }">
-							Win up to
+							Выиграйте до
 							<Icon
 								:class="{ [MainStyle['styled-icon']]: true }"
 								name="crypto-ton"
@@ -216,7 +216,7 @@ onUnmounted(() => {
 										:start-animation="true"
 									>
 										<span :class="{ [MainStyle['text']]: true }"
-											>The list of players in daily raffle is empty</span
+											>Список игроков в ежедневной лотерее пуст</span
 										>
 									</Animation>
 								</div>
