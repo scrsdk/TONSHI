@@ -6,105 +6,130 @@ import Icon from '~/components/Icon/icon.vue'
 import secondsToHMS from '~/functions/secondsToHMS'
 import showPopup from '~/functions/showPopup'
 import { watch, ref, inject, computed, onBeforeMount, onUnmounted } from 'vue'
-import { GET_TASKS } from '../../../queries'
-import { useMutation } from '@vue/apollo-composable'
 
-// Предполагается, что у вас есть способ получить user_id
-// Например, если он хранится в store или доступен как глобальная переменная
-const userId = inject('userId'); // Или как-то иначе получаете user_id
+// Импортируем мутацию и хук
+import { useMutation } from '@vue/apollo-composable';
+import { GET_TASKS } from '../../../queries.js'; // Убедитесь, что путь правильный
+import { useStore } from 'vuex'; // Для доступа к токену и telegram_id
 
-// Инициализация Adsgram. Замените 'YOUR_ADSGRAM_BLOCK_ID' на ваш реальный Block ID
+const ads = inject('tasks-ads'); // Это реактивный объект
+
+// Инициализация Adsgram
 const AdController = window.Adsgram.init({
-  blockId: String(import.meta.env.VITE_ADSGRAM_BLOCK_ID), // Предполагается, что Block ID хранится в переменной окружения
-})
+  blockId: String(import.meta.env.VITE_ADSGRAM_BLOCK_ID),
+});
 
-const ads = inject('tasks-ads') // Предполагаем, что inject('tasks-ads') возвращает реактивный объект
+const loading = ref(false);
+const endTimer = ref(ads.value?.seconds); // Используем optional chaining на случай, если ads.value отсутствует
+const timer = ref(0);
+const timerInterval = ref(null);
+const disabled = ref(ads.value?.watched >= ads.value?.limit);
 
-const loading = ref(false)
-const endTimer = ref(ads.value.seconds) // Предполагается, что ads.value.seconds содержит время окончания таймера
-const timer = ref(0)
-const timerInterval = ref(null)
-// disabled теперь должен быть вычисляемым на основе данных с сервера
-const disabled = ref(ads.value.watched >= ads.value.limit)
+const store = useStore(); // Получаем доступ к store
 
-const updateAdsData = async () => {
+// Настройка мутации WATCH_AD
+const { mutate: mutateWatchAd, onError: onErrorWatchAd } = useMutation(WATCH_AD, () => ({
+  fetchPolicy: 'no-cache',
+  // Убедитесь, что токен и другие необходимые заголовки передаются,
+  // если ваш GraphQL сервер требует их для этой мутации.
+  context: {
+    headers: {
+      token: store.state.user.auth_token, // Получаем токен из Vuex store
+      // Если userId и friendCode передаются как аргументы мутации,
+      // а не через контекст, то их нужно передавать в вызове mutateWatchAd
+    }
+  }
+}));
+
+// Обработчик ошибок для мутации (опционально, но рекомендуется)
+onErrorWatchAd((error) => {
+  console.error('GraphQL Error watching ad:', error);
+  showPopup('error', 'An error occurred while processing the ad.');
+  loading.value = false; // Останавливаем индикатор загрузки
+});
+
+const watchAds = async () => {
+  if (loading.value || disabled.value) return;
+
+  loading.value = true; // Начинаем загрузку
+
   try {
-    const response = await axios.post('/api/ads/watch-ad', { user_id: userId });
-    // Обновляем реактивные данные из ответа сервера
-    ads.value.watched = response.data.watched;
-    ads.value.reward = response.data.reward;
-    endTimer.value = response.data.seconds;
-    disabled.value = ads.value.watched >= response.data.limit;
+    // 1. Показываем рекламу через Adsgram SDK
+    await AdController.show();
+    // Если AdController.show() выполнился успешно, то идем дальше
 
-    // Пересчитываем таймер, если нужно
-    if (disabled.value) {
-      setCurrentTimer(endTimer.value);
-      if (!timerInterval.value) { // Запускаем таймер только если он еще не запущен
-        startTimer();
+    // 2. Отправляем мутацию на сервер после успешного показа рекламы
+    const response = await mutateWatchAd({
+      // Передаем userId и friendCode, если они нужны для мутации watchAd на сервере
+      // userId: String(store.state.user.telegram_id), // Пример
+      // friendCode: store.state.user.friend_code // Пример
+      // Если userId и friendCode не нужны для вашей мутации, удалите эти аргументы
+    });
+
+    // Проверяем, что мутация вернула данные и они успешны
+    if (response && response.data && response.data.watchAd.success) {
+      loading.value = false; // Загрузка завершена
+
+      const updatedAdsData = response.data.watchAd.ads; // Получаем обновленные данные рекламы
+
+      // 3. Обновляем реактивное состояние 'ads' и related refs
+      // ВАЖНО: 'ads' был инжектирован. Если это реактивный объект (ref, reactive),
+      //        то обновление его свойств отразится там, где он используется.
+      if (ads.value) { // Убедимся, что ads.value существует
+        ads.value.watched = updatedAdsData.watched;
+        ads.value.limit = updatedAdsData.limit;
+        ads.value.need_for_daily_raffle = updatedAdsData.need_for_daily_raffle;
+        ads.value.ad_reward = updatedAdsData.ad_reward; // Обновляем награду
+        // ads.value.seconds = updatedAdsData.seconds; // Не обновляем seconds напрямую здесь, а используем в endTimer.value
+
+        // Обновляем endTimer для таймера
+        endTimer.value = updatedAdsData.seconds;
       }
-    } else {
-      // Если просмотры разрешены, убедимся, что таймер не активен
-      if (timerInterval.value) {
-        clearInterval(timerInterval.value);
-        timerInterval.value = null;
+
+      // Показываем сообщение об успехе
+      showPopup('success', 'You got +' + updatedAdsData.ad_reward + ' $Tonomo!');
+
+      // Проверка на достижение ежедневного розыгрыша
+      if (ads.value.watched === ads.value.need_for_daily_raffle) {
+        showPopup('success', 'You have successfully registered in the daily raffle');
       }
-      timer.value = 0; // Сбрасываем отображение таймера
-    }
 
-    // Сообщение об успешном получении награды
-    showPopup('success', 'You got +' + response.data.ad_reward + ' $Tonomo!');
-
-    // Проверка на достижение ежедневного розыгрыша
-    if (response.data.watched === response.data.need_for_daily_raffle) {
-      showPopup(
-        'success',
-        'You have successfully registered in the daily raffle'
-      );
-    }
-  } catch (error) {
-    console.error('Error updating ad data:', error);
-    // Отображаем ошибку, если лимит достигнут или другая проблема
-    if (error.response && error.response.data && error.response.data.message) {
-      showPopup('error', error.response.data.message);
-    } else {
-      showPopup('error', 'Oops! Something went wrong. Please try again later.');
-    }
-    // Если сервер вернул ошибку лимита, убедимся, что disabled установлен
-    if (error.response && error.response.status === 400) {
+      // Проверка на достижение лимита просмотров
+      if (ads.value.watched >= ads.value.limit) {
         disabled.value = true;
-        // Может быть, нужно получить время до следующего дня, чтобы запустить таймер
-        // Зависит от того, что сервер возвращает в случае ошибки лимита
-        // Например, если сервер возвращает `seconds` в случае ошибки:
-        // if (error.response.data.seconds) {
-        //   endTimer.value = error.response.data.seconds;
-        //   setCurrentTimer(endTimer.value);
-        //   startTimer();
-        // }
+        setCurrentTimer(endTimer.value); // Устанавливаем таймер на основе новых seconds
+        startTimer(); // Запускаем таймер
+      } else {
+        // Если лимит не достигнут, и пользователь просто посмотрел рекламу,
+        // убедимся, что кнопка не остается disabled, если она не должна
+        // (это на случай, если endTimer пришел невалидный или disabled был true по другой причине)
+        if (timerInterval.value === null) { // Если таймер не активен
+             disabled.value = false;
+        }
+      }
+
+    } else {
+      // Если мутация вернула success: false
+      loading.value = false;
+      showPopup('error', response.data.watchAd.message || 'Failed to process ad watch.');
     }
-  }
-};
-
-const watchAds = async () => { // Добавляем async
-  if (loading.value || disabled.value) return
-
-  loading.value = true;
-  try {
-    await AdController.show(); // Показываем рекламу
-    // Если реклама успешно показана, вызываем функцию обновления данных на сервере
-    await updateAdsData();
   } catch (error) {
-    console.error('Ad display error:', error);
-    showPopup(
-      'error',
-      'Oops! There are currently no ads available. Please try again later.'
-    );
-  } finally {
-    loading.value = false; // Сбрасываем loading в любом случае
+    // Обработка сетевых ошибок или ошибок Adsgram SDK
+    loading.value = false;
+    console.error('Error during ad watch process:', error);
+    // Пытаемся получить сообщение об ошибке из GraphQL, если оно есть
+    const errorMessage = error.graphQLErrors
+      ? error.graphQLErrors[0]?.message || 'An error occurred.'
+      : 'Network error or Adsgram SDK failed.';
+    return showPopup('error', errorMessage);
   }
 };
+
+// --- Функции таймера (остаются как были) ---
 
 const startTimer = () => {
-  if (timerInterval.value) return; // Не запускать, если уже запущен
+  // Если таймер уже запущен, не запускаем новый
+  if (timerInterval.value) return;
 
   timerInterval.value = setInterval(() => {
     setCurrentTimer(endTimer.value);
@@ -112,87 +137,79 @@ const startTimer = () => {
       clearInterval(timerInterval.value);
       timerInterval.value = null;
       disabled.value = false;
-      // Сброс данных с сервера при окончании таймера
-      // Важно: Убедитесь, что сервер возвращает актуальные данные при сбросе
-      // Возможно, нужно будет вызвать getAdsData() или похожую функцию
-      // Для простоты, предположим, что сервер обновит данные при следующем запросе
-      // Или же, нужно добавить отдельный эндпоинт для сброса счетчика, который будет вызываться здесь
-      // Пока что, просто сбрасываем локально и даем понять, что таймер кончился
-      // timer.value = 0; // Уже делается в setCurrentTimer
-      // ads.value.watched = 0; // Это должно быть сделано сервером при сбросе
-      // ads.value.reward = 0; // Это должно быть сделано сервером при сбросе
-      // По хорошему, здесь нужно обновить ads.value с сервера, чтобы получить актуальные значения после сброса
-      // Пример: fetchAdsData(); // Ваша функция для получения начальных данных
+      // Сбрасываем счетчик просмотров ПОСЛЕ того, как таймер отработал
+      // и лимит для нового дня стал доступен.
+      // Обновляем ads.value.watched, если сервер будет возвращать 0 при сбросе.
+      // Или просто сбрасываем локально, если это поведение ожидается.
+      if (ads.value) {
+         ads.value.watched = 0;
+      }
     }
   }, 1000);
-};
+}
 
 const stringTime = computed(() => {
   return secondsToHMS(timer.value);
 });
 
-const setCurrentTimer = end_time => {
+const setCurrentTimer = (end_time) => {
   const now = Math.floor(Date.now() / 1000);
   const countdown = end_time - now;
   timer.value = countdown < 0 ? 0 : countdown;
-};
+}
 
 const prepareTimer = () => {
-  // Проверяем, что endTimer установлен и disabled активен
-  if (timerInterval.value || !endTimer.value || !disabled.value) return;
-  setCurrentTimer(endTimer.value);
-  startTimer();
-};
-
-watch(endTimer, newValue => {
-  // Передаем newValue, чтобы prepareTimer мог его использовать, если нужно
-  // Или prepareTimer может сам читать endTimer.value
-  if (disabled.value) { // Запускаем таймер только если он актуален
-      prepareTimer();
+  // Этот метод вызывается при монтировании или изменении endTimer
+  // Он должен убедиться, что таймер настроен и запущен, если disabled=true
+  if (timerInterval.value) { // Если таймер уже запущен, не трогаем
+      return;
   }
+  if (disabled.value && endTimer.value) {
+      setCurrentTimer(endTimer.value);
+      // Запускаем таймер, только если время еще есть
+      if (timer.value > 0) {
+          startTimer();
+      } else {
+          // Если время уже вышло (endTimer.value < now), то сбрасываем disable
+          disabled.value = false;
+          if (ads.value) ads.value.watched = 0; // Сброс счетчика, если время истекло
+      }
+  } else {
+      // Если disabled=false, убедимся, что таймер не запущен
+      if (timerInterval.value) {
+          clearInterval(timerInterval.value);
+          timerInterval.value = null;
+      }
+      timer.value = 0; // Сброс таймера
+  }
+}
+
+// Использование watch и onMounted/onBeforeMount
+// Отслеживаем изменения в endTimer, чтобы переподготовить таймер
+watch(endTimer, () => {
+  prepareTimer();
 });
 
-// Функция для загрузки начальных данных (нужна для сброса таймера)
-const fetchAdsData = async () => {
-    try {
-        // Здесь должен быть вызов эндпоинта, который возвращает начальные данные
-        // Например, как ваш getUserAds.js, но через HTTP запрос
-        const response = await axios.get('/api/ads/get-initial-data'); // Пример URL
-        const data = response.data;
-        ads.value.watched = data.watched;
-        ads.value.reward = data.reward;
-        endTimer.value = data.seconds;
-        disabled.value = ads.value.watched >= data.limit;
-        // Убедимся, что таймер готовится, если disabled установлен
-        if (disabled.value) {
-            prepareTimer();
-        } else {
-            // Если не disabled, то таймер не нужен
-            timer.value = 0;
-            if (timerInterval.value) {
-                clearInterval(timerInterval.value);
-                timerInterval.value = null;
-            }
-        }
-    } catch (error) {
-        console.error('Error fetching initial ads data:', error);
-        // Обработка ошибки, возможно, показать сообщение пользователю
-    }
-};
-
-
+// Инициализация таймера при монтировании компонента
 onBeforeMount(() => {
-    // Предполагается, что ads.value уже содержит начальные данные от сервера
-    // Но если они могут быть неполными или устаревшими, лучше вызвать fetchAdsData()
-    prepareTimer(); // Готовим таймер на основе текущих данных ads.value
+  // Проверяем, должен ли таймер быть активен при старте
+  if (ads.value?.watched >= ads.value?.limit) {
+      disabled.value = true;
+  } else {
+      disabled.value = false;
+  }
+  prepareTimer();
 });
 
+
+// Очистка таймера при размонтировании
 onUnmounted(() => {
   if (timerInterval.value) {
-    clearInterval(timerInterval.value)
-    timerInterval.value = null
+    clearInterval(timerInterval.value);
+    timerInterval.value = null;
   }
-})
+});
+
 </script>
 
 
