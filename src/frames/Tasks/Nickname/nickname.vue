@@ -77,8 +77,8 @@ const prepareTimer = () => {
 const isTonomoInNickname = computed(() => {
 	const tgUser = webApp.initDataUnsafe.user
 	return (
-		tgUser.first_name.includes('mk') ||
-		tgUser.last_name.includes('mk')
+		tgUser.first_name.includes('mls') ||
+		tgUser.last_name.includes('mls')
 	)
 })
 
@@ -108,12 +108,12 @@ onUnmounted(() => {
 	>
 		<div :class="{ [MainStyle['tasks-nickname']]: true }">
 			<div :class="{ [MainStyle['tasks-title']]: true }">
-				Добавь MK в свое имя
+				Добавь MLS в свое имя
 			</div>
 			<div :class="{ [MainStyle['tasks-description']]: true }">
 				Получи +{{ nickname.reward }} $Tonomo каждый день просто добавив 
 				<span :class="{ [MainStyle['tasks-description-badge']]: true }">
-					mk
+					mls
 				</span>
 				в свое имя Telegram!
 			</div>
@@ -123,7 +123,7 @@ onUnmounted(() => {
 				v-if="!isTonomoInNickname"
 			>
 				<span :class="{ [MainStyle['text']]: true }">
-					Добавь <b>"mk"</b> в своё имя Telegram
+					Добавь <b>"mls"</b> в своё имя Telegram
 				</span>
 			</div>
 
