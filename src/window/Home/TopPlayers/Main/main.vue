@@ -104,8 +104,8 @@ const leagueInfo = computed(() => getLeagueInfo(currentLeague.value))
 
 const stringLeagueProgress = computed(() => {
   if (myCurrentLeague.value === currentLeague.value) return user.value.balance.tonomo + (currentLeague.value !== "master" ? "/" + (Number(leagueProgress.value.progress.to) + 1) : "") + " $Tonomo";
-  if (currentLeague.value === "master") return "from " + leagueProgress.value.progress.from + " $Tonomo"
-  return "from " + leagueProgress.value.progress.from + " $Tonomo to " + (Number(leagueProgress.value.progress.to) + 1) + " $Tonomo"
+  if (currentLeague.value === "master") return "от " + leagueProgress.value.progress.from + " $Tonomo"
+  return "от " + leagueProgress.value.progress.from + " $Tonomo до " + (Number(leagueProgress.value.progress.to) + 1) + " $Tonomo"
 })
 
 const leagueLinePercent = computed(() => {
