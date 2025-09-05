@@ -31,7 +31,7 @@ const user = computed(() => store.state.user)
       <div :class="{ [ItemStyle['info']]: true }">
         <div :class="{ [ItemStyle['name']]: true, [GenericStyle['text-overflow-80']]: true }">{{ props.name }}</div>
         <div :class="{ [ItemStyle['friends-text']]: true }">
-          <span :class="{ [ItemStyle['count']]: true }">{{ integerSpaces(props.friends) }}</span> friends
+          <span :class="{ [ItemStyle['count']]: true }">{{ integerSpaces(props.friends) }}</span> друзей
         </div>
       </div>
     </div>
