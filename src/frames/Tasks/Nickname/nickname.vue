@@ -108,7 +108,7 @@ onUnmounted(() => {
 	>
 		<div :class="{ [MainStyle['tasks-nickname']]: true }">
 			<div :class="{ [MainStyle['tasks-title']]: true }">
-				Добавь $Tonomo в свое имя
+				Добавь MK в свое имя
 			</div>
 			<div :class="{ [MainStyle['tasks-description']]: true }">
 				Получи +{{ nickname.reward }} $Tonomo каждый день просто добавив 
