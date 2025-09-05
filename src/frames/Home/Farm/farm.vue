@@ -52,9 +52,9 @@ const toggleFarm = async () => {
       "Хотели бы вы сократить свой майтинг до 1 часа?",
       {name: "start-farming"},
       [
-        {type: 'free', text: '2h'},
-        {type: 'checkin', text: '1h 30m'},
-        {type: 'donate', text: '1h'},
+        {type: 'free', text: '2ч'},
+        {type: 'checkin', text: '1ч 30м'},
+        {type: 'donate', text: '1ч'},
       ]
   );
 }
