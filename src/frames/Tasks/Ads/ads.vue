@@ -6,7 +6,8 @@ import Icon from '~/components/Icon/icon.vue'
 import secondsToHMS from '~/functions/secondsToHMS'
 import showPopup from '~/functions/showPopup'
 import { watch, ref, inject, computed, onBeforeMount, onUnmounted } from 'vue'
-import axios from 'axios' // Импортируем axios
+import { GET_TASKS } from '../../../queries'
+import { useMutation } from '@vue/apollo-composable'
 
 // Предполагается, что у вас есть способ получить user_id
 // Например, если он хранится в store или доступен как глобальная переменная
