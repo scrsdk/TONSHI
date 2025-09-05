@@ -5,6 +5,6 @@ import HeaderStyle from "./header.module.css"
 <template>
   <div :class="{ [HeaderStyle['bottom-modal-header-custom']]: true }">
     <div :class="{ [HeaderStyle['image']]: true }"></div>
-    <span :class="{ [HeaderStyle['title']]: true }">Purchase</span>
+    <span :class="{ [HeaderStyle['title']]: true }">Покупка</span>
   </div>
 </template>
