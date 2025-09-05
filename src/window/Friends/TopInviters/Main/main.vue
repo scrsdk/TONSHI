@@ -46,7 +46,7 @@ const load = async () => {
 
 onErrorGetTopInviters(async () => {
   await toggleWindow();
-  return showPopup('error', "An error occurred while loading top 300 inviters")
+  return showPopup('error', "При загрузке 300 лучших приглашателей произошла ошибка")
 })
 
 onMounted(() => load())
@@ -60,10 +60,10 @@ onMounted(() => load())
       </Animation>
       <div :class="{ [MainStyle['info']]: true }">
         <Animation name="top-inviters-header-title" :animation-style="AnimationsMain" :start-animation="true">
-          <span :class="{ [MainStyle['title']]: true }">Top 300 inviters</span>
+          <span :class="{ [MainStyle['title']]: true }">Топ 300 пригласивших</span>
         </Animation>
         <Animation name="top-inviters-header-description" :animation-style="AnimationsMain" :start-animation="true">
-          <span :class="{ [MainStyle['description']]: true }">Invite more friends to get here</span>
+          <span :class="{ [MainStyle['description']]: true }">Пригласи сюда больше друзей</span>
         </Animation>
       </div>
     </div>
@@ -71,7 +71,7 @@ onMounted(() => load())
       <div :class="{ [MainStyle['invite']]: true }">
         <button type="button" :class="{ [MainStyle['button']]: true, [MainStyle['invite-share']]: true }" @click="inviteFriends">
           <Icon :class="{ [MainStyle['styled-icon']]: true }" name="friends-share-user" />
-          <span :class="{ [MainStyle['name']]: true }">Invite friends</span>
+          <span :class="{ [MainStyle['name']]: true }">Пригласить друзей</span>
         </button>
         <button type="button" :class="{ [MainStyle['button']]: true, [MainStyle['invite-copy']]: true }" @click="copyUrl">
           <Icon :class="{ [MainStyle['styled-icon']]: true }" name="copy" />
