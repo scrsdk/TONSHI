@@ -32,14 +32,14 @@ const leagueInfo = computed(() => getLeagueInfo(props.type))
       <div :class="{ [ItemStyle['rewards']]: true }">
         <div :class="{ [ItemStyle['reward']]: true }">
           <div :class="{ [ItemStyle['amount']]: true }">
-            <span :class="{ [ItemStyle['small-text']]: true }">Without Premium got</span>
+            <span :class="{ [ItemStyle['small-text']]: true }">Без Premium</span>
             <span :class="{ [ItemStyle['value']]: true }">{{ integerSpaces(props.default) }}</span>
           </div>
           <Icon :class="{ [ItemStyle['styled-icon']]: true }" name="tonomo-coin" />
         </div>
         <div :class="{ [ItemStyle['reward']]: true }">
           <div :class="{ [ItemStyle['amount']]: true }">
-            <span :class="{ [ItemStyle['small-text']]: true }">With Premium got</span>
+            <span :class="{ [ItemStyle['small-text']]: true }">С Premium</span>
             <span :class="{ [ItemStyle['value']]: true }">{{ integerSpaces(props.premium) }}</span>
           </div>
           <Icon :class="{ [ItemStyle['styled-icon']]: true }" name="tonomo-coin" />
