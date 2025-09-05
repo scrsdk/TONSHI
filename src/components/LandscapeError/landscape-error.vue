@@ -25,6 +25,6 @@ onBeforeUnmount(() => {
 
 <template>
   <div :class="{ [LandscapeErrorStyle['landscape-error']]: true }" v-if="!isPortrait">
-    <span :class="{ [LandscapeErrorStyle['text']]: true }">Switch the device to portrait mode</span>
+    <span :class="{ [LandscapeErrorStyle['text']]: true }">Переключите устройство в портретный режим</span>
   </div>
 </template>
