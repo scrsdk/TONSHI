@@ -49,12 +49,12 @@ const toggleFarm = async () => {
       ]
   );
   return toggleDonationHelper(
-      "Хотели бы вы сократить свой фарм до 12 часов?",
+      "Хотели бы вы сократить свой майтинг до 1 часа?",
       {name: "start-farming"},
       [
-        {type: 'free', text: '24h'},
-        {type: 'checkin', text: '19h 12m'},
-        {type: 'donate', text: '12h'},
+        {type: 'free', text: '2h'},
+        {type: 'checkin', text: '1h 30m'},
+        {type: 'donate', text: '1h'},
       ]
   );
 }
