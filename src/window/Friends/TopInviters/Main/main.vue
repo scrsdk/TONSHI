@@ -24,7 +24,7 @@ const webAppNavigation = useWebAppNavigation()
 
 const inviteFriends = () => webAppNavigation.openTelegramLink(shareUrlInviteFriends(user.value.friend_code));
 const copyUrl = () => {
-  showPopup("info", "Invite link copied to clipboard");
+  showPopup("info", "Ссылка на приглашение скопирована");
   return navigator.clipboard.writeText(shareUrlInviteFriends(user.value.friend_code, false));
 }
 
