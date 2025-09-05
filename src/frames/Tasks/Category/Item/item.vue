@@ -45,7 +45,7 @@ const description = computed(() => {
 				: user.value.balance.tonomo) +
 			'/' +
 			info.amount +
-			' $Tonomo. Get ' +
+			' $Tonomo. Получить ' +
 			props.reward +
 			' $Tonomo'
 		)
@@ -55,7 +55,7 @@ const description = computed(() => {
 			(info.sum > info.amount ? info.amount : info.sum) +
 			'/' +
 			info.amount +
-			'$. Get ' +
+			'$. Получить ' +
 			props.reward +
 			' $Tonomo'
 		)
@@ -65,12 +65,12 @@ const description = computed(() => {
 			(info.count > info.amount ? info.amount : info.count) +
 			'/' +
 			info.amount +
-			' friends. Get ' +
+			' friends. Получить ' +
 			props.reward +
 			' $Tonomo'
 		)
 	}
-	return 'Get ' + props.reward + ' $Tonomo'
+	return 'Получить ' + props.reward + ' $Tonomo'
 })
 
 const icon = computed(() => {
@@ -199,9 +199,9 @@ const open = () => {
 					user.value.friend_code,
 				postText =
 					(!user.value.is_premium
-						? 'Earn $Tonomo together 👉' + inviteLink + '👈. '
+						? 'Зарабатывайте $Tonomo вместе 👉' + inviteLink + '👈. '
 						: '') +
-					'Join us in an exciting adventure as we team up with Binance, Bybit, OKX, Bitget and ready for a powerful airdrop!'
+					'Присоединяйтесь к нам в захватывающем приключении, когда мы объеденимся с Binance, Bybit, OKX, Bitget и будем готовы к мощному AirDrop!'
 			return webAppShare.shareToStory(
 				import.meta.env.VITE_CDN_MAIN + '/telegram-story.jpg?v=1',
 				{
@@ -214,7 +214,7 @@ const open = () => {
 								import.meta.env.VITE_TELEGRAM_WEBAPP_URI +
 								'?startapp=' +
 								user.value.friend_code,
-							name: 'Earn $Tonomo',
+							name: 'Зарабатывайте $Tonomo',
 						},
 					}),
 				}
@@ -266,7 +266,7 @@ const claim = async () => {
 	if (store.state.tasks_id_pending)
 		return showPopup(
 			'error',
-			'Wait for the previous task to check before starting a new task.'
+			'Дождитесь проверки предыдущего задания, прежде чем начинать новое.'
 		)
 	if (props.claim || loading.value || !started.value) return
 	loading.value = true
@@ -274,7 +274,7 @@ const claim = async () => {
 		const info = props.info
 		if (info.type === 'telegram-wallet' && !tonAddress.value) {
 			loading.value = false
-			return showPopup('error', 'Link Wallet to complete this task')
+			return showPopup('error', 'Привяжите Wallet для выполнения этого задания')
 		}
 		const req = await mutateClaimTasks()
 		if (!req || !req.data || !req.data.claimTasks) return
@@ -289,7 +289,7 @@ const claim = async () => {
 		}
 		loading.value = false
 		await store.dispatch('user/setUserBalance_Tonomo', data.tonomo)
-		return showPopup('success', 'You got +' + data.amount + ' $Tonomo!')
+		return showPopup('success', 'Вы получили +' + data.amount + ' $Tonomo!')
 	}
 	claimTimeout.value = setTimeout(
 		async () => make(),
@@ -358,7 +358,7 @@ onUnmounted(() => {
 					}"
 					@click="open"
 				>
-					<span :class="{ [ItemStyle['name']]: true }">Open</span>
+					<span :class="{ [ItemStyle['name']]: true }">Открыть</span>
 				</button>
 				<button
 					v-if="!props.claim"
@@ -383,10 +383,10 @@ onUnmounted(() => {
 					/>
 					<span :class="{ [ItemStyle['name']]: true }" v-else>{{
 						started
-							? 'Claim'
+							? 'Забрать'
 							: props.info.type === 'friends'
-							? 'Invite'
-							: 'Start'
+							? 'Пригласить'
+							: 'Начать'
 					}}</span>
 				</button>
 				<button
