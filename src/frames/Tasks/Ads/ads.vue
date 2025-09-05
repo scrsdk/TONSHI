@@ -9,7 +9,7 @@ import { watch, ref, inject, computed, onBeforeMount, onUnmounted } from 'vue'
 
 // Импортируем мутацию и хук
 import { useMutation } from '@vue/apollo-composable';
-import { GET_TASKS } from '../../../queries.js'; // Убедитесь, что путь правильный
+import { WATCH_AD } from '~/queries.js'; // Убедитесь, что путь правильный
 import { useStore } from 'vuex'; // Для доступа к токену и telegram_id
 
 const ads = inject('tasks-ads'); // Это реактивный объект
@@ -211,7 +211,6 @@ onUnmounted(() => {
 });
 
 </script>
-
 
 <template>
 	<Animation
