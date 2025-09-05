@@ -20,7 +20,7 @@ const globalLoading = computed(() => store.state.global_loading)
     />
     <div :class="{ [MainStyle['info']]: true }">
       <span :class="{ [MainStyle['message']]: true }">{{ globalLoading.message }}</span>
-      <span :class="{ [MainStyle['warning-message']]: true }">Please do not close the application.</span>
+      <span :class="{ [MainStyle['warning-message']]: true }">Пожалуйста, не закрывайте приложение.</span>
     </div>
   </div>
 </template>
