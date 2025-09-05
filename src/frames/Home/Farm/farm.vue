@@ -115,7 +115,7 @@ onUnmounted(() => {
         <div :class="{ [FarmStyle['league-farm-progress']]: true }" v-if="user.current_farm.unique !== null" :style="{ width: `${currentFarmingProgress}%` }"></div>
         <div :class="{ [FarmStyle['name']]: true }" v-if="!user.current_farm.unique">ЗАПУСК</div>
         <div :class="{ [FarmStyle['name']]: true }" v-else>
-          {{ currentStatusFarming ? 'Farming' : 'Take income' }}
+          {{ currentStatusFarming ? 'Запущен..' : 'Забрать' }}
           <Icon :name="currentStatusFarming ? 'tonomo-gray-coin-text-dark' : 'tonomo-white-coin'" :class="{ [FarmStyle['styled-icon']]: true }" />
           <count-up
               :class="{ [FarmStyle['amount']]: true }"
