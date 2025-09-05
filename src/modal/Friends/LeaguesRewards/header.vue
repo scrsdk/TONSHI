@@ -5,6 +5,6 @@ import HeaderStyle from "./header.module.css";
 <template>
   <div :class="{ [HeaderStyle['bottom-modal-header-custom']]: true }">
     <div :class="{ [HeaderStyle['image']]: true }"></div>
-    <span :class="{ [HeaderStyle['title']]: true }">Bonus for upgrading league your friend</span>
+    <span :class="{ [HeaderStyle['title']]: true }">Бонус за повышение в лиги твоих друзей</span>
   </div>
 </template>
