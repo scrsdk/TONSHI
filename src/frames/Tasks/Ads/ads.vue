@@ -1,15 +1,16 @@
 <script setup>
-import AnimationsAds from './animations.module.css'
-import MainStyle from './ads.module.css'
-import Animation from '../../../components/animation.vue'
-import Icon from '~/components/Icon/icon.vue'
-import secondsToHMS from '~/functions/secondsToHMS'
-import showPopup from '~/functions/showPopup'
-import { watch, ref, inject, computed, onBeforeMount, onUnmounted } from 'vue'
+import AnimationsAds from './animations.module.css';
+import MainStyle from './ads.module.css';
+import Animation from '../../../components/animation.vue';
+import Icon from '~/components/Icon/icon.vue';
+import secondsToHMS from '~/functions/secondsToHMS';
+import showPopup from '~/functions/showPopup';
+import { watch, ref, inject, computed, onMounted, onUnmounted } from 'vue';
 
-// Импортируем мутацию и хук
-import { useMutation } from '@vue/apollo-composable';
-import { GET_TASKS } from '~/queries.js'; // Убедитесь, что путь правильный
+// Импортируем GraphQL хуки и мутации
+import { useMutation, useQuery } from '@vue/apollo-composable';
+import { WATCH_AD } from '~/queries.js';
+import { GET_TASKS } from '~/queries.js'; // Импортируем GET_TASKS
 import { useStore } from 'vuex'; // Для доступа к токену и telegram_id
 
 const ads = inject('tasks-ads'); // Это реактивный объект
@@ -19,130 +20,114 @@ const AdController = window.Adsgram.init({
   blockId: String(import.meta.env.VITE_ADSGRAM_BLOCK_ID),
 });
 
-const loading = ref(false);
-const endTimer = ref(ads.value?.seconds); // Используем optional chaining на случай, если ads.value отсутствует
+const loading = ref(false); // Для индикатора загрузки при просмотре рекламы
+const endTimer = ref(ads.value?.seconds); // Используем optional chaining
 const timer = ref(0);
 const timerInterval = ref(null);
 const disabled = ref(ads.value?.watched >= ads.value?.limit);
-
-const store = useStore(); // Получаем доступ к store
+const store = useStore();
 
 // Настройка мутации WATCH_AD
 const { mutate: mutateWatchAd, onError: onErrorWatchAd } = useMutation(WATCH_AD, () => ({
   fetchPolicy: 'no-cache',
-  // Убедитесь, что токен и другие необходимые заголовки передаются,
-  // если ваш GraphQL сервер требует их для этой мутации.
   context: {
     headers: {
-      token: store.state.user.auth_token, // Получаем токен из Vuex store
-      // Если userId и friendCode передаются как аргументы мутации,
-      // а не через контекст, то их нужно передавать в вызове mutateWatchAd
-    }
-  }
+      token: store.state.user.auth_token, // Получаем токен из Vuex
+    },
+  },
 }));
 
-// Обработчик ошибок для мутации (опционально, но рекомендуется)
+// Обработчик ошибок для мутации
 onErrorWatchAd((error) => {
   console.error('GraphQL Error watching ad:', error);
   showPopup('error', 'An error occurred while processing the ad.');
-  loading.value = false; // Останавливаем индикатор загрузки
+  loading.value = false;
 });
+
+// Переписываем loadTasks
+const { refetch: refetchTasks, result: tasksResult } = useQuery(GET_TASKS, {}, {fetchPolicy: 'no-cache',});
+
+// Получаем данные ads из tasksResult.value.loadTasks.ads
+watch(() => tasksResult.value?.loadTasks?.ads, (newAdsData) => {
+    if (newAdsData) {
+        // Обновляем свойства ads.value из данных, полученных с сервера (начальные)
+        if (ads.value) {
+          ads.value.watched = newAdsData.watched;
+          ads.value.limit = newAdsData.limit;
+          ads.value.need_for_daily_raffle = newAdsData.need_for_daily_raffle;
+          ads.value.ad_reward = newAdsData.ad_reward;
+          endTimer.value = newAdsData.seconds; // Устанавливаем endTimer
+        }
+
+    }
+}, { deep: true });
 
 const watchAds = async () => {
   if (loading.value || disabled.value) return;
-
-  loading.value = true; // Начинаем загрузку
+  loading.value = true;
 
   try {
-    // 1. Показываем рекламу через Adsgram SDK
     await AdController.show();
-    // Если AdController.show() выполнился успешно, то идем дальше
 
-    // 2. Отправляем мутацию на сервер после успешного показа рекламы
     const response = await mutateWatchAd({
-      // Передаем userId и friendCode, если они нужны для мутации watchAd на сервере
-      // userId: String(store.state.user.telegram_id), // Пример
-      // friendCode: store.state.user.friend_code // Пример
-      // Если userId и friendCode не нужны для вашей мутации, удалите эти аргументы
+      // Если нужны аргументы для watchAd, передавайте их здесь.
+      // userId: String(store.state.user.telegram_id),
+      // friendCode: store.state.user.friend_code,
     });
 
-    // Проверяем, что мутация вернула данные и они успешны
     if (response && response.data && response.data.watchAd.success) {
-      loading.value = false; // Загрузка завершена
+      loading.value = false;
+      const updatedAdsData = response.data.watchAd.ads;
 
-      const updatedAdsData = response.data.watchAd.ads; // Получаем обновленные данные рекламы
-
-      // 3. Обновляем реактивное состояние 'ads' и related refs
-      // ВАЖНО: 'ads' был инжектирован. Если это реактивный объект (ref, reactive),
-      //        то обновление его свойств отразится там, где он используется.
-      if (ads.value) { // Убедимся, что ads.value существует
+      if (ads.value) {
         ads.value.watched = updatedAdsData.watched;
         ads.value.limit = updatedAdsData.limit;
         ads.value.need_for_daily_raffle = updatedAdsData.need_for_daily_raffle;
-        ads.value.ad_reward = updatedAdsData.ad_reward; // Обновляем награду
-        // ads.value.seconds = updatedAdsData.seconds; // Не обновляем seconds напрямую здесь, а используем в endTimer.value
-
-        // Обновляем endTimer для таймера
+        ads.value.ad_reward = updatedAdsData.ad_reward;
         endTimer.value = updatedAdsData.seconds;
       }
 
-      // Показываем сообщение об успехе
       showPopup('success', 'You got +' + updatedAdsData.ad_reward + ' $Tonomo!');
 
-      // Проверка на достижение ежедневного розыгрыша
       if (ads.value.watched === ads.value.need_for_daily_raffle) {
         showPopup('success', 'You have successfully registered in the daily raffle');
       }
 
-      // Проверка на достижение лимита просмотров
       if (ads.value.watched >= ads.value.limit) {
         disabled.value = true;
-        setCurrentTimer(endTimer.value); // Устанавливаем таймер на основе новых seconds
-        startTimer(); // Запускаем таймер
+        setCurrentTimer(endTimer.value);
+        startTimer();
       } else {
-        // Если лимит не достигнут, и пользователь просто посмотрел рекламу,
-        // убедимся, что кнопка не остается disabled, если она не должна
-        // (это на случай, если endTimer пришел невалидный или disabled был true по другой причине)
-        if (timerInterval.value === null) { // Если таймер не активен
-             disabled.value = false;
+        // Если лимит не достигнут, убеждаемся, что кнопка активна
+        if (timerInterval.value === null) {
+          disabled.value = false;
         }
       }
-
     } else {
-      // Если мутация вернула success: false
       loading.value = false;
       showPopup('error', response.data.watchAd.message || 'Failed to process ad watch.');
     }
   } catch (error) {
-    // Обработка сетевых ошибок или ошибок Adsgram SDK
     loading.value = false;
     console.error('Error during ad watch process:', error);
-    // Пытаемся получить сообщение об ошибке из GraphQL, если оно есть
     const errorMessage = error.graphQLErrors
       ? error.graphQLErrors[0]?.message || 'An error occurred.'
-      : 'Network error or Adsgram SDK failed.';
+      : 'Network error or Adsgram failed.';
     return showPopup('error', errorMessage);
   }
 };
 
-// --- Функции таймера (остаются как были) ---
-
+// Таймер
 const startTimer = () => {
-  // Если таймер уже запущен, не запускаем новый
   if (timerInterval.value) return;
-
   timerInterval.value = setInterval(() => {
     setCurrentTimer(endTimer.value);
     if (timer.value <= 0) {
       clearInterval(timerInterval.value);
       timerInterval.value = null;
       disabled.value = false;
-      // Сбрасываем счетчик просмотров ПОСЛЕ того, как таймер отработал
-      // и лимит для нового дня стал доступен.
-      // Обновляем ads.value.watched, если сервер будет возвращать 0 при сбросе.
-      // Или просто сбрасываем локально, если это поведение ожидается.
       if (ads.value) {
-         ads.value.watched = 0;
+        ads.value.watched = 0;
       }
     }
   }, 1000);
@@ -159,50 +144,48 @@ const setCurrentTimer = (end_time) => {
 }
 
 const prepareTimer = () => {
-  // Этот метод вызывается при монтировании или изменении endTimer
-  // Он должен убедиться, что таймер настроен и запущен, если disabled=true
-  if (timerInterval.value) { // Если таймер уже запущен, не трогаем
-      return;
-  }
+  if (timerInterval.value) return;
   if (disabled.value && endTimer.value) {
-      setCurrentTimer(endTimer.value);
-      // Запускаем таймер, только если время еще есть
-      if (timer.value > 0) {
-          startTimer();
-      } else {
-          // Если время уже вышло (endTimer.value < now), то сбрасываем disable
-          disabled.value = false;
-          if (ads.value) ads.value.watched = 0; // Сброс счетчика, если время истекло
-      }
+    setCurrentTimer(endTimer.value);
+    if (timer.value > 0) {
+      startTimer();
+    } else {
+      disabled.value = false;
+      if (ads.value) ads.value.watched = 0;
+    }
   } else {
-      // Если disabled=false, убедимся, что таймер не запущен
-      if (timerInterval.value) {
-          clearInterval(timerInterval.value);
-          timerInterval.value = null;
-      }
-      timer.value = 0; // Сброс таймера
+    if (timerInterval.value) {
+      clearInterval(timerInterval.value);
+      timerInterval.value = null;
+    }
+    timer.value = 0;
   }
 }
 
-// Использование watch и onMounted/onBeforeMount
-// Отслеживаем изменения в endTimer, чтобы переподготовить таймер
 watch(endTimer, () => {
   prepareTimer();
 });
 
-// Инициализация таймера при монтировании компонента
-onBeforeMount(() => {
+onMounted(() => {
+    // Вызываем refetchTasks для загрузки начальных данных из GET_TASKS
+    refetchTasks()
+      .then(() => {
+        // Тут можно что-то сделать после загрузки данных
+      })
+      .catch(error => {
+        console.error('Error loading tasks:', error);
+        // Обработка ошибок при загрузке начальных данных
+      });
+
   // Проверяем, должен ли таймер быть активен при старте
   if (ads.value?.watched >= ads.value?.limit) {
-      disabled.value = true;
+    disabled.value = true;
   } else {
-      disabled.value = false;
+    disabled.value = false;
   }
   prepareTimer();
 });
 
-
-// Очистка таймера при размонтировании
 onUnmounted(() => {
   if (timerInterval.value) {
     clearInterval(timerInterval.value);
@@ -213,42 +196,119 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<Animation
-		name="tasks-ads"
-		:animation-style="AnimationsAds"
-		:start-animation="true"
-	>
-		<div :class="{ [MainStyle['tasks-ads']]: true }">
-			<div :class="{ [MainStyle['tasks-title']]: true }">
-				Реклама
-			</div>
-			<div :class="{ [MainStyle['tasks-description']]: true }">
-				Смотрите ежедневную рекламу и получайте +{{ ads.ad_reward }} $Tonomo!
-			</div>
-
-			<Animation
-				name="tasks-ads-button"
-				:animation-style="AnimationsAds"
-				:start-animation="true"
-			>
-				<button
-					:class="{ [MainStyle['ads-button']]: true }"
-					:disabled="disabled"
-					@click="watchAds"
-				>
-					<span :class="{ [MainStyle['badge']]: true }">Ads</span>
-					<div :class="{ [MainStyle['name']]: true }">
-						<Icon :class="{ [MainStyle['styled-icon']]: true }" name="ad" />
-						<span :class="{ [MainStyle['text']]: true }">Посмотреть</span>
-					</div>
-					<span v-if="!disabled" :class="{ [MainStyle['count']]: true }"
-						>{{ ads.watched }}/{{ ads.limit }}</span
-					>
-					<span v-else :class="{ [MainStyle['count']]: true }">{{
-						stringTime
-					}}</span>
-				</button>
-			</Animation>
-		</div>
-	</Animation>
+  <!-- Ваш шаблон здесь -->
+  <div :class="MainStyle.container">
+    <div :class="MainStyle.adsWrapper">
+      <button
+        :class="[MainStyle.adsButton, loading ? MainStyle.loading : '', disabled ? MainStyle.disabled : '']"
+        @click="watchAds"
+        :disabled="loading || disabled"
+      >
+        <Animation v-if="loading" :animation="AnimationsAds.rotate" />
+        <Icon v-else :icon="TasksIcon" />
+        <span v-if="!loading">
+          {{ disabled ? `Wait ${stringTime}` : 'Watch Ad' }}
+        </span>
+      </button>
+       <div v-if="ads?.limit" :class="MainStyle.adsInfo">
+            Watched: {{ ads.value?.watched }} / {{ ads.value?.limit }}
+          </div>
+    </div>
+  </div>
 </template>
+
+<style module="MainStyle">
+/* Ваши стили */
+.container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  color: white;
+}
+
+.adsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.adsButton {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.adsButton:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.adsButton.disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.adsButton.loading {
+  background-color: #6c757d;
+  cursor: wait;
+}
+
+.adsInfo {
+  font-size: 14px;
+  color: #adb5bd;
+}
+</style>
+
+
+<template>
+  <Animation
+    name="tasks-ads"
+    :animation-style="AnimationsAds"
+    :start-animation="true"
+  >
+    <div :class="MainStyle['tasks-ads']">
+      <div :class="MainStyle['tasks-title']">
+        Реклама
+      </div>
+      <div :class="MainStyle['tasks-description']">
+        Смотрите ежедневную рекламу и получайте +{{ ads.ad_reward }} $Tonomo!
+      </div>
+
+      <Animation
+        name="tasks-ads-button"
+        :animation-style="AnimationsAds"
+        :start-animation="true"
+      >
+        <button
+          :class="[MainStyle['ads-button'], loading ? MainStyle['loading'] : '', disabled ? MainStyle['disabled'] : '']"
+          @click="watchAds"
+          :disabled="loading || disabled"
+        >
+          <span :class="MainStyle['badge']">Ads</span>
+          <div :class="MainStyle['name']">
+            <Icon :class="MainStyle['styled-icon']" name="ad" />
+            <span :class="MainStyle['text']">Посмотреть</span>
+          </div>
+          <span v-if="!disabled" :class="MainStyle['count']">
+            {{ ads.watched }} / {{ ads.limit }}
+          </span>
+          <span v-else :class="MainStyle['count']">
+            {{ stringTime }}
+          </span>
+        </button>
+      </Animation>
+    </div>
+  </Animation>
+</template>
+
+
