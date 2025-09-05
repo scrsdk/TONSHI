@@ -104,11 +104,10 @@ onUnmounted(() => {
 	>
 		<div :class="{ [MainStyle['tasks-ads']]: true }">
 			<div :class="{ [MainStyle['tasks-title']]: true }">
-				Advertising Awards
+				Реклама
 			</div>
 			<div :class="{ [MainStyle['tasks-description']]: true }">
-				Watch daily ads inside our app and get +{{ ads.ad_reward }} $Tonomo for
-				every ad you watch.
+				Смотрите ежедневную рекламу и получайте +{{ ads.ad_reward }} $Tonomo!
 			</div>
 
 			<Animation
@@ -121,10 +120,10 @@ onUnmounted(() => {
 					:disabled="disabled"
 					@click="watchAds"
 				>
-					<span :class="{ [MainStyle['badge']]: true }">New</span>
+					<span :class="{ [MainStyle['badge']]: true }">Ads</span>
 					<div :class="{ [MainStyle['name']]: true }">
 						<Icon :class="{ [MainStyle['styled-icon']]: true }" name="ad" />
-						<span :class="{ [MainStyle['text']]: true }">Watch Ads</span>
+						<span :class="{ [MainStyle['text']]: true }">Посмотреть</span>
 					</div>
 					<span v-if="!disabled" :class="{ [MainStyle['count']]: true }"
 						>{{ ads.watched }}/{{ ads.limit }}</span
