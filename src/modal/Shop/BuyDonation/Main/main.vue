@@ -142,12 +142,12 @@ const buy = async type => {
 						await loadBalance()
 						return await showPopup(
 							'success',
-							'Successful donation. You got +' + vTono.value + ' $vTono!'
+							'Успешный донат. Вы получили +' + vTono.value + ' $vTono!'
 						)
 					} else if (status === 'failed')
 						await showPopup(
 							'error',
-							'There was an error paying your bill through Stars.'
+							'Произошла ошибка при оплате счета через Stars.'
 						)
 				})
 			} else buttonLoading.value = false
@@ -159,7 +159,7 @@ const buy = async type => {
 			}
 			return makeTonPayment()
 		default:
-			return showPopup('error', 'Invalid payment method sent')
+			return showPopup('error', 'Неверный способ оплаты отправлен')
 	}
 }
 
@@ -217,7 +217,7 @@ const makeTonPayment = async () => {
 						'user/setUserBalance_vTono',
 						checkData.balance.vTono
 					)
-					return showPopup('success', 'You got +' + vTono.value + ' $vTono!')
+					return showPopup('success', 'Вы получили +' + vTono.value + ' $vTono!')
 				}
 			}, 3000)
 		}
@@ -227,7 +227,7 @@ const makeTonPayment = async () => {
 		if (err.message.includes('Shop declined the request')) {
 			showPopup(
 				'error',
-				'An error occurred while creating a transaction. Try relinking your wallet.'
+				'При создании транзакции произошла ошибка. Попробуйте пересвязать свой кошелек.'
 			)
 		}
 	}
@@ -287,7 +287,7 @@ onMounted(async () => {
 			>
 				<div :class="{ [MainStyle['info']]: true }">
 					<div :class="{ [MainStyle['title']]: true }">
-						<span :class="{ [MainStyle['text']]: true }">You will receive</span>
+						<span :class="{ [MainStyle['text']]: true }">Вы получите</span>
 						<div :class="{ [MainStyle['amount-vtono']]: true }">
 							<Icon
 								:class="{ [MainStyle['styled-icon']]: true }"
