@@ -46,7 +46,7 @@ const sortedCategoryItems = computed(() => {
           <Icon :class="{ [MainStyle['styled-icon']]: true }" name="bottom-menu-tasks" />
         </Animation>
         <Animation name="tasks-category-not-found-description" :animation-style="AnimationsCategory" :start-animation="true">
-          <span :class="{ [MainStyle['text']]: true }">The list of tasks in the {{ categoryInfo.name }} category is empty.</span>
+          <span :class="{ [MainStyle['text']]: true }">Список заданий в категории {{ categoryInfo.name }} пуст.</span>
         </Animation>
       </div>
     </div>
